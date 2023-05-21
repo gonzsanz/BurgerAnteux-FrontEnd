@@ -3,11 +3,11 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
-  selector: 'app-category-list',
-  templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.scss'],
+  selector: 'app-carta',
+  templateUrl: './carta.component.html',
+  styleUrls: ['./carta.component.scss'],
 })
-export class CategoryListComponent implements OnInit {
+export class CartaComponent implements OnInit {
   productList: any[] | undefined;
   categories: any[] = [
     'HAMBURGUESAS',

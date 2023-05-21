@@ -15,6 +15,8 @@ export class ProductService {
   }
 
   public getProductsByCategory(category: string): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiUrl}/category/${category}`);
+    return this.httpClient.get<any>(
+      `${environment.apiUrl}/category/${category}`
+    );
   }
 }

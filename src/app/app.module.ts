@@ -9,21 +9,19 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './views/productsList/product-list/product-list.component';
-import { ProductComponent } from './views/productsList/product/product/product.component';
-import { UserComponent } from './views/user/user.component';
+import { ProductComponent } from './pages/product/product/product.component';
+import { UserComponent } from './pages/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogComponent } from './views/productsList/product/dialog/dialog.component';
-import { CategoryListComponent } from './views/category-list/category-list.component';
+import { DialogComponent } from './pages/product/dialog/dialog.component';
+import { CartaComponent } from './pages/carta/carta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
     ProductComponent,
     UserComponent,
     DialogComponent,
-    CategoryListComponent,
+    CartaComponent,
   ],
   imports: [
     BrowserModule,

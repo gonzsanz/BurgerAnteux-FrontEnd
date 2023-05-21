@@ -5,12 +5,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
+
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './views/productsList/product-list/product-list.component';
 import { ProductComponent } from './views/productsList/product/product/product.component';
 import { UserComponent } from './views/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './views/productsList/product/dialog/dialog.component';
+import { CategoryListComponent } from './views/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,7 @@ import { DialogComponent } from './views/productsList/product/dialog/dialog.comp
     ProductComponent,
     UserComponent,
     DialogComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,8 @@ import { DialogComponent } from './views/productsList/product/dialog/dialog.comp
     MatDialogModule,
     MatButtonModule,
     FormsModule,
+    MatChipsModule,
+    MatListModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule],
   providers: [],

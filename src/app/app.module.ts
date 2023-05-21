@@ -14,6 +14,7 @@ import { UserComponent } from './pages/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './pages/product/dialog/dialog.component';
 import { CartaComponent } from './pages/carta/carta.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CartaComponent } from './pages/carta/carta.component';
     UserComponent,
     DialogComponent,
     CartaComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

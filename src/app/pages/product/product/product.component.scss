@@ -1,3 +1,4 @@
+
 .button-container {
   display: flex;
   flex-direction: row;
@@ -19,6 +20,7 @@
   background-color: #161616;
   border: 1px solid #fff;
   padding: 3px;
+  box-shadow: 0 0 10px #161616;
 }
 
 .card-body {

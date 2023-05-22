@@ -1,0 +1,33 @@
+@import '/src/app/variables.scss';
+
+header{
+    background-color: $color-negro;
+}
+
+img {
+    width: 50px;
+    height: 50%;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-link{
+    color: $color-blanco;
+}
+
+.menu{
+    color: $color-amarillo;
+    border: none;
+}
+
+.menu:focus {
+    box-shadow: none;
+}
+
+.person{
+  color: $color-amarillo;
+}
+.carrito {
+    color: $color-amarillo;
+}

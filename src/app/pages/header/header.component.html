@@ -8,7 +8,19 @@
             <div class="logo">
                 <img src="assets/logoblanco.png" alt="Logo web">
             </div>
-            <div class="navbar-collapse collapse order-md-2" id="collapsibleNavbar"> <!-- Colapsable del menú -->
+            <div class="order-md-3">
+                <div class="d-flex">
+                    <button mat-icon-button class="person">
+                        <mat-icon>person</mat-icon>
+                        <span class="acceso">Acceso</span>
+                    </button>
+                    <button mat-icon-button class="carrito">
+                        <mat-icon>shopping_cart</mat-icon>
+                        <span class="cesta">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse order-md-2" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link">Home</a>
@@ -23,16 +35,6 @@
                         <a class="nav-link">Reservas</a>
                     </li>
                 </ul>
-            </div>
-            <div class="order-md-3">
-                <div class="d-flex">
-                    <button mat-icon-button class="person">
-                        <mat-icon>person</mat-icon>
-                    </button>
-                    <button mat-icon-button class="carrito">
-                        <mat-icon>shopping_cart</mat-icon>
-                    </button>
-                </div>
             </div>
         </nav>
     </div>

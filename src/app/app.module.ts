@@ -15,6 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './pages/product/dialog/dialog.component';
 import { CartaComponent } from './pages/carta/carta.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { appRouting } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     FormsModule,
     MatChipsModule,
     MatListModule,
+    AppRoutingModule,
+    appRouting,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule],
   providers: [],

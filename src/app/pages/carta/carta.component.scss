@@ -1,0 +1,19 @@
+#productList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px;
+
+  .color {
+    background-color: #F4E10B;
+    color: #161616;
+    cursor: pointer;
+  }
+}

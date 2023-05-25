@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 
@@ -16,8 +16,12 @@ import { DialogComponent } from './pages/product/dialog/dialog.component';
 import { CartaComponent } from './pages/carta/carta.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
 import { appRouting } from './app-routing.module';
+import { RegistroComponent } from './pages/registro/registro.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { appRouting } from './app-routing.module';
     DialogComponent,
     CartaComponent,
     NotFoundComponent,
+    RegistroComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,10 +42,14 @@ import { appRouting } from './app-routing.module';
     MatDialogModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatChipsModule,
     MatListModule,
     AppRoutingModule,
     appRouting,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule],
   providers: [],

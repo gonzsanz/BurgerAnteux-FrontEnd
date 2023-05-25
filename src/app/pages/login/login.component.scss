@@ -1,0 +1,87 @@
+// .login-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+//   background: #000;
+
+  .login-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 2rem;
+  }
+
+//   .login-form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: #fff;
+//     border: 1px solid #000;
+//     height: 80vh;
+//     width: calc(100vw - 20px);
+//   }
+
+//   .main {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: blue;
+//     border: 1px solid #fff;
+//     height: 80vh;
+//   }
+
+//   .formulario {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     width: calc(100vw - 20px);
+//   }
+// }
+
+mat-error {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  // margin: 100px 0px;
+  background-color: #000;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.login-confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

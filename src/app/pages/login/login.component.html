@@ -1,8 +1,8 @@
-
 <section>
   <mat-card>
-    <mat-card-title class="login-heading">LOGIN</mat-card-title>
-    <mat-card-content class="">
+
+    <mat-card-title class="login-heading"> LOGIN </mat-card-title>
+    <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formulario">
         <div class="login-username mx-5 mb-3">
           <mat-form-field>
@@ -17,21 +17,26 @@
         </div>
 
         <div class="login-password mx-5 mb-3">
-          <mat-form-field>
+          <mat-form-field class="password">
             <mat-label>
               <mat-icon>lock</mat-icon>
               <span>Contraseña</span>
             </mat-label>
-            <input matInput formControlName="password" required>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required minlength="8">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Introduzca una contraseña</mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
           </mat-form-field>
         </div>
 
         <div class="login-confirm">
-          <button mat-raised-button color="primary" type="submit">LOGIN</button>
+          <button mat-raised-button type="submit">LOGIN</button>
         </div>
         <div class="login-footer mt-5">
-          ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+          ¿No tienes cuenta? <a routerLink="/register">&nbsp;Regístrate</a>
         </div>
       </form>
     </mat-card-content>

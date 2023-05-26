@@ -13,11 +13,12 @@ import {
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  hide = true;
 
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     });
   }
 

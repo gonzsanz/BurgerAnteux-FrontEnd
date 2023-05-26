@@ -1,0 +1,146 @@
+.login-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+mat-error {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 100vw;
+  background: #000;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 250px;
+  max-width: 500px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.login-confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.login-nombre {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  .apellido {
+    flex-basis: 57%;
+  }
+}
+
+.login-address {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  .address {
+    flex-basis: 55%;
+  }
+
+  .phone {
+    flex-basis: 43%;
+  }
+}
+
+.login-email {
+  display: flex;
+  width: 100%;
+
+  .email {
+    flex-basis: 100%;
+  }
+}
+
+.login-password {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .password {
+    flex-basis: 49%;
+  }
+
+  .password2 {
+    flex-basis: 49%;
+  }
+}
+
+
+@media (max-width: 550px) {
+
+  .login-nombre {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .login-email {
+    width: auto;
+  }
+
+  .login-nombre {
+    width: auto;
+    justify-content: center;
+  }
+
+  .login-address {
+    width: auto;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .login-password {
+    width: auto;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}

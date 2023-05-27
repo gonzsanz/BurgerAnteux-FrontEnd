@@ -24,13 +24,11 @@ export class DialogComponent {
   }
 
   public remove(): void {
-    if (this.quantity > 1)
-    this.quantity--;
+    if (this.quantity > 1) this.quantity--;
     this.total = this.product.price * this.quantity;
   }
 
   public cancel(): void {
     this.dialogRef.close();
   }
-
 }

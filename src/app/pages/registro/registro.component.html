@@ -1,6 +1,6 @@
 <section>
   <mat-card>
-    <mat-card-title class="login-heading">SIGN UP</mat-card-title>
+    <mat-card-title class="login-heading">REGISTRARSE</mat-card-title>
     <mat-card-content>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="formulario">
         <div class="login-nombre mx-5 mb-3">
@@ -59,24 +59,37 @@
               <mat-icon>lock</mat-icon>
               <span>Contraseña</span>
             </mat-label>
-            <input matInput formControlName="password" required>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required minlength="8">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
             <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Introduzca una contraseña</mat-error>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
           </mat-form-field>
           <mat-form-field class="password2">
             <mat-label>
               <mat-icon>lock</mat-icon>
               <span>Repetir contraseña</span>
             </mat-label>
-            <input matInput formControlName="password" required>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Introduzca una contraseña</mat-error>
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="password2" required minlength="8">
+            <button type="button" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('password2')?.hasError('passwordMismatch')">
+              Las contraseñas no coinciden
+            </mat-error>
+
           </mat-form-field>
+
         </div>
 
         <div class="login-confirm">
-          <button mat-raised-button color="primary" type="submit">REGISTRARSE</button>
+          <button [disabled]="registerForm.invalid" mat-raised-button type="submit">REGISTRARSE</button>
         </div>
         <div class="login-footer mt-5">
-          ¿Ya tienes cuenta? <a routerLink="/login">Iniciar sesión</a>
+          ¿Ya tienes cuenta? <a routerLink="/login">&nbsp;Iniciar sesión</a>
         </div>
       </form>
     </mat-card-content>

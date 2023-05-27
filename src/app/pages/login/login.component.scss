@@ -34,7 +34,6 @@ section {
 
 mat-card {
   background-color: rgba(116, 116, 116, 0.5);
-  /* Establece un color de fondo semi-transparente */
   backdrop-filter: blur(8px);
   margin: 1rem;
 }
@@ -66,8 +65,13 @@ mat-card-content {
   align-items: center;
 
   button {
-    font-family: $fuente-anteux;
     background-color: $color-amarillo;
+    font-weight: bold;
+
+    &:disabled {
+      background-color: $color-amarillo;
+      opacity: 0.5;
+    }
   }
 }
 
@@ -77,6 +81,7 @@ mat-card-content {
   align-items: center;
   margin-top: 20px;
   color: $color-blanco;
+  font-weight: bold;
 
   a {
     text-decoration: none;

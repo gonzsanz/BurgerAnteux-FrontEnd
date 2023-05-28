@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 
@@ -24,6 +23,12 @@ import { appRouting } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 
+import { RegistroComponent } from './pages/registro/registro.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { AboutComponent } from './pages/about/about.component';
     NotFoundComponent,
     HomeComponent,
     AboutComponent,
+    RegistroComponent,
+    LoginComponent,
+    SuccesDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,10 +54,14 @@ import { AboutComponent } from './pages/about/about.component';
     MatDialogModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatChipsModule,
     MatListModule,
     AppRoutingModule,
     appRouting,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule],
   providers: [],

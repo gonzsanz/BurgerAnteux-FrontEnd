@@ -26,7 +26,8 @@ export class CartaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService
+      window.scrollTo(0, 0);
+      this.productService
       .getProductsByCategory(this.category)
       .subscribe((data: any[]) => {
         this.productList = data;

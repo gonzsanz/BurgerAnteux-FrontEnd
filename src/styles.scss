@@ -37,8 +37,5 @@ $BurgerAnteux-FrontEnd-theme: mat.define-light-theme((
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap');
 $color-negro: #161616;
 
-*{
-  font-family: 'Heebo', sans-serif;
-}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Heebo', sans-serif;}

@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NotFoundComponent {
 
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 }

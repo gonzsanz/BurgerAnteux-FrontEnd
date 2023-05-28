@@ -1,15 +1,17 @@
-<div class="opciones">
-  <mat-chip-listbox aria-label="Category selection">
-    <mat-chip-option (click)="changeCategory('TODOS')" class="color" selected>Todos</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('ESPECIALIDADES')" class="color">Especialidades</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('HAMBURGUESAS')" class="color">Hamburguesas</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('BOCADILLOS')" class="color">Bocadillos</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('PERRITOS')" class="color">Perritos</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('PLATOS COMBINADOS')" class="color">Platos Combinados</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('RACIONES')" class="color">Raciones</mat-chip-option>
-    <mat-chip-option (click)="changeCategory('POSTRES')" class="color">Postres</mat-chip-option>
-  </mat-chip-listbox>
-</div>
-<div id="productList">
-  <app-product class="mt-5" *ngFor="let category of productList" [product]="category"></app-product>
+<div class="container-fluid">
+  <div class="opciones">
+    <mat-chip-listbox aria-label="Category selection">
+      <mat-chip (click)="changeCategory('TODOS')" class="color" selected>Todos</mat-chip>
+      <mat-chip (click)="changeCategory('ESPECIALIDADES')" class="color">Especialidades</mat-chip>
+      <mat-chip (click)="changeCategory('HAMBURGUESAS')" class="color">Hamburguesas</mat-chip>
+      <mat-chip (click)="changeCategory('BOCADILLOS')" class="color">Bocadillos</mat-chip>
+      <mat-chip (click)="changeCategory('PERRITOS')" class="color">Perritos</mat-chip>
+      <mat-chip (click)="changeCategory('PLATOS COMBINADOS')" class="color">Platos Combinados</mat-chip>
+      <mat-chip (click)="changeCategory('RACIONES')" class="color">Raciones</mat-chip>
+      <mat-chip (click)="changeCategory('POSTRES')" class="color">Postres</mat-chip>
+    </mat-chip-listbox>
+  </div>
+  <div id="productList">
+    <app-product class="mt-5" *ngFor="let category of productList" [product]="category"></app-product>
+  </div>
 </div>

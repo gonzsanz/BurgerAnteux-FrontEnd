@@ -20,8 +20,9 @@ import { DialogComponent } from './pages/product/dialog/dialog.component';
 import { CartaComponent } from './pages/carta/carta.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
 import { appRouting } from './app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { appRouting } from './app-routing.module';
     DialogComponent,
     CartaComponent,
     NotFoundComponent,
+    HomeComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

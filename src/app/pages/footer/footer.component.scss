@@ -2,6 +2,8 @@
 
 footer {
     background-color: $color-negro;
+    flex-shrink: 0;
+    
     p{
         color: $color-blanco;
     }
@@ -32,7 +34,8 @@ footer {
     mat-icon{
         color: $color-amarillo;
         height: auto;
-        padding-right: 2rem;
+        padding-right: 1.8rem;
+        margin-bottom: 1rem;
     }
     .media{
         margin: 2rem 0 2rem 0;

@@ -20,6 +20,9 @@ import { CartaComponent } from './pages/carta/carta.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { appRouting } from './app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+
 import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatInputModule } from '@angular/material/input';
@@ -37,6 +40,8 @@ import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dia
     DialogComponent,
     CartaComponent,
     NotFoundComponent,
+    HomeComponent,
+    AboutComponent,
     RegistroComponent,
     LoginComponent,
     SuccesDialogComponent,

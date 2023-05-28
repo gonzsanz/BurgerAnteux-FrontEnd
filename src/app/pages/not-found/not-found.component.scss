@@ -113,11 +113,17 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;  
+}
+
+.btn:hover {
+  transform: scale(1.2);
+  background-color: #4B4B62;
+  color: #fff;
 }
 
 @keyframes dash {
-
+  
   0%,
   30% {
     fill: 4B4B62;

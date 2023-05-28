@@ -7,34 +7,36 @@
                     <mat-icon>menu</mat-icon>
                 </button>
             </div>
-            <div class="logo d-flex">
-                <img src="assets/logoblanco.png" alt="Logo web">
+            <div class="logo">
+                <a [routerLink]="['/inicio']">
+                    <div class="d-flex">
+                        <img src="assets/logoblanco.png" alt="Logo web">
+                    </div>
+                </a>
             </div>
             <div class="order-md-3">
                 <div class="d-flex">
                     <button mat-icon-button class="person">
                         <mat-icon>person</mat-icon>
-                        <span class="acceso">Acceso</span>
                     </button>
                     <button mat-icon-button class="carrito">
                         <mat-icon>shopping_cart</mat-icon>
-                        <span class="cesta">0</span>
                     </button>
                 </div>
             </div>
             <div class="navbar-collapse collapse order-md-2" id="collapsibleNavbar">
-                <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+                <ul class="navbar-nav mx-auto mt-2">
                     <li class="nav-item">
-                        <a class="nav-link">Home</a>
+                        <a class="nav-link" [routerLink]="['/inicio']" routerLinkActive="active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Carta</a>
+                        <a class="nav-link" [routerLink]="['/carta']" routerLinkActive="active">Carta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Sobre nosotros</a>
+                        <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">Sobre nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Reservas</a>
+                        <a class="nav-link" [routerLink]="['/reservas']" routerLinkActive="active">Reservas</a>
                     </li>
                 </ul>
             </div>

@@ -15,6 +15,10 @@ export class LoginComponent {
   loginForm: FormGroup;
   hide = true;
 
+  ngOnInit(): void {
+    window.scroll(0, 0);
+  }
+
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),

@@ -31,6 +31,7 @@ export class RegistroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.registerForm = this.formBuilder.group(
       {
         name: new FormControl('', [Validators.required]),

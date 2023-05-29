@@ -21,13 +21,19 @@
         align-items: center;
         flex-direction: column;
         margin-top: 0;
-        .logo{
-            width: 20%;
-            height: 30%;
+        .imagen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             object-fit: cover;
+            .logo {
+                width: 30%;
+                height: 30%;
+            }
         }
         .title {
             font-family: $fuente-anteux;
+            text-align: center;
             font-size: 4rem;
             font-weight: 700;
             margin-top: 3rem;

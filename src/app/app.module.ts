@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dialog.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dia
     RegistroComponent,
     LoginComponent,
     SuccesDialogComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

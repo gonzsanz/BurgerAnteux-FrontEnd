@@ -19,6 +19,6 @@ export class AuthService {
 
   checkSession(): Observable<boolean> {
     const email = sessionStorage.getItem('email');
-    return of(!!email); // Devuelve true si hay un valor en sessionStorage para 'email', lo que indica que la sesión está activa
+    return of(!!email);
   }
 }

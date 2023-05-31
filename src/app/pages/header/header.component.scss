@@ -2,45 +2,49 @@
 
 header {
   background-color: $color-negro;
+  z-index: 999;
 }
 
-.logo{
-    margin-left: 5%;
-    
-    img {
-        width: 55px;
-        height: 50%;
-        padding: 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.logo {
+  margin-left: 5%;
+
+  img {
+    width: 55px;
+    height: 50%;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .navbar-collapse {
-    padding-left: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .nav-item {
-    a {
-        color: $color-blanco;
-      &:hover {
-        transform: scale(1.1);
-        color: $color-amarillo;
-      }
-    }
-    .nav-link.active {
+  a {
+    color: $color-blanco;
+
+    &:hover {
+      transform: scale(1.1);
       color: $color-amarillo;
     }
+  }
 
-}
-
-.nav-link{
-    color: $color-blanco;
-}
-.menu{
+  .nav-link.active {
     color: $color-amarillo;
-    border: none;
+  }
+
+}
+
+.nav-link {
+  color: $color-blanco;
+}
+
+.menu {
+  color: $color-amarillo;
+  border: none;
 
 }
 
@@ -57,14 +61,19 @@ header {
 
 }
 
+mat-menu {
+  z-index: 1000;
+
+}
+
 .carrito {
   display: flex;
   flex-direction: column;
   width: auto;
   height: auto;
   color: $color-amarillo;
-  
-  .carrito-extra{
+
+  .carrito-extra {
     display: flex;
     flex-direction: column;
     width: auto;

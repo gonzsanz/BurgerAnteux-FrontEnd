@@ -16,22 +16,29 @@
       </div>
       <div class="order-md-3">
         <div class="d-flex">
-          <a *ngIf="isSessionActive" [routerLink]="['/perfil']">
+          <!-- <a *ngIf="isSessionActive" [routerLink]="['/perfil']">
             <button mat-icon-button class="person">
               <mat-icon>account_circle</mat-icon>
             </button>
-          </a>
+          </a> -->
+          <button *ngIf="isSessionActive" mat-icon-button [matMenuTriggerFor]="menu"
+            class="person"><mat-icon>account_circle</mat-icon></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/perfil']"><mat-icon>manage_accounts</mat-icon>Mi perfil</button>
+            <button mat-menu-item><mat-icon>shopping_bag</mat-icon>Mis pedidos</button>
+            <button mat-menu-item (click)="cerrarSesion()"><mat-icon>logout</mat-icon> Salir</button>
+          </mat-menu>
           <a *ngIf="!isSessionActive" [routerLink]="['/login']">
             <button mat-icon-button class="person">
               <mat-icon>person</mat-icon>
             </button>
           </a>
           <button mat-icon-button class="carrito">
-                        <div *ngIf="isCartaPage" [matBadge]="cartItemsCount" matBadgeSize="small"
-                            matBadgeColor="primary" class="carrito-extra">
-                <mat-icon>shopping_cart</mat-icon>
-                        </div>
-                        <mat-icon *ngIf="!isCartaPage">shopping_cart</mat-icon>
+            <div *ngIf="isCartaPage" [matBadge]="cartItemsCount" matBadgeSize="small" matBadgeColor="primary"
+              class="carrito-extra">
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+            <mat-icon *ngIf="!isCartaPage">shopping_cart</mat-icon>
           </button>
         </div>
       </div>

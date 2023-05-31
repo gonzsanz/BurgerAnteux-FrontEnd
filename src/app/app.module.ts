@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
@@ -29,6 +30,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dialog.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
@@ -46,7 +48,6 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     RegistroComponent,
     LoginComponent,
     SuccesDialogComponent,
-    PerfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,8 +65,9 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatBadgeModule
   ],
-  exports: [MatIconModule, MatDialogModule, MatButtonModule],
+  exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

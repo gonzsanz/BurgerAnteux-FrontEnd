@@ -9,7 +9,7 @@
       <button mat-icon-button class="cart" (click)="openDialog()">
         <mat-icon>shopping_cart</mat-icon>
       </button>
-      <p>{{product.price}}€</p>
+      <p>{{product.price | number:'1.2'}}€</p>
     </div>
   </div>
 </div>

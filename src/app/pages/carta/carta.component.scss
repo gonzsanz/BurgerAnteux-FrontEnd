@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 .container-fluid{
     margin-bottom: 2rem;
 }
@@ -15,9 +16,26 @@
   justify-content: space-around;
   margin: 10px;
 
-  .color {
-    background-color: #F4E10B;
-    color: #161616;
-    cursor: pointer;
+  .btn-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
+
+  .btn {
+    background-color: $color-amarillo;
+    color: $color-negro;
+    border: none;
+    border-radius: 20px;
+  }
+
+  .btn-selected {
+    background-color: $color-negro;
+    color: $color-amarillo;
+  }
+  
+}
+#text{
+  color: $color-amarillo;
 }

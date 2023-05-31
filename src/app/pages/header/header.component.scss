@@ -63,6 +63,15 @@ header {
   width: auto;
   height: auto;
   color: $color-amarillo;
+  
+  .carrito-extra{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    color: $color-amarillo;
+    font-size: small;
+  }
 }
 
 .acceso {
@@ -73,17 +82,4 @@ header {
   font-weight: 500;
   line-height: 15px;
   text-align: center;
-}
-.cesta {
-  display: inline-block;
-  background-color: $color-amarillo;
-  color: $color-negro;
-  width: 14px;
-  height: 14px;
-  font-size: 10px;
-  text-align: center;
-  border-radius: 60%;
-  position: absolute;
-  top: 5px;
-  right: .2px;
 }

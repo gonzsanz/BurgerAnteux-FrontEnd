@@ -8,44 +8,38 @@ import { Product } from 'src/app/shared/interfaces/product';
   styleUrls: ['./carta.component.scss'],
 })
 export class CartaComponent implements OnInit {
+  selectedCategory: string = 'ESPECIALIDADES';
   productList: any[] | undefined;
   categories: any[] = [
+    'TODOS',
+    'ESPECIALIDADES',
     'HAMBURGUESAS',
     'BOCADILLOS',
+    'PERRITOS',
+    'PLATOS COMBINADOS',
+    'RACIONES',
     'POSTRES',
-    'ESPECIALIDADES',
   ];
-  category: string = 'TODOS';
 
-  constructor(private productService: ProductService) {
-    this.productService
-      .getProductsByCategory(this.category)
-      .subscribe((products) => {
-        this.productList = products;
-      });
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-      window.scrollTo(0, 0);
-      this.productService
-      .getProductsByCategory(this.category)
-      .subscribe((data: any[]) => {
-        this.productList = data;
-      });
-
-    this.changeCategory(this.category);
+    window.scrollTo(0, 0);
+    this.getProductByCategory(this.selectedCategory);
   }
 
   private getProductByCategory(category: string): void {
+    if (category === 'TODOS') {
+      this.getAllProducts();
+      return;
+    }
+
     this.productService.getProductsByCategory(category).subscribe(
       (products: Product[]) => {
         this.productList = products;
       },
       (error: Error) => {
         console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
       }
     );
   }
@@ -57,19 +51,12 @@ export class CartaComponent implements OnInit {
       },
       (error: Error) => {
         console.log('Error: ', error);
-      },
-      () => {
-        console.log('Petición realizada correctamente');
       }
     );
   }
 
   public changeCategory(category: string): void {
-    if (category === 'TODOS') {
-      this.getAllProducts();
-      return;
-    }
-    this.category = category;
-    this.getProductByCategory(this.category);
+    this.selectedCategory = category;
+    this.getProductByCategory(this.selectedCategory);
   }
 }

@@ -1,15 +1,23 @@
 <div class="container-fluid">
   <div class="opciones">
-    <mat-chip-listbox aria-label="Category selection">
-      <mat-chip (click)="changeCategory('TODOS')" class="color" selected>Todos</mat-chip>
-      <mat-chip (click)="changeCategory('ESPECIALIDADES')" class="color">Especialidades</mat-chip>
-      <mat-chip (click)="changeCategory('HAMBURGUESAS')" class="color">Hamburguesas</mat-chip>
-      <mat-chip (click)="changeCategory('BOCADILLOS')" class="color">Bocadillos</mat-chip>
-      <mat-chip (click)="changeCategory('PERRITOS')" class="color">Perritos</mat-chip>
-      <mat-chip (click)="changeCategory('PLATOS COMBINADOS')" class="color">Platos Combinados</mat-chip>
-      <mat-chip (click)="changeCategory('RACIONES')" class="color">Raciones</mat-chip>
-      <mat-chip (click)="changeCategory('POSTRES')" class="color">Postres</mat-chip>
-    </mat-chip-listbox>
+    <div class="btn-group" role="group" aria-label="Category selection">
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'TODOS'"
+        (click)="changeCategory('TODOS')">Todos</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'ESPECIALIDADES'"
+        (click)="changeCategory('ESPECIALIDADES')">Especialidades</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'HAMBURGUESAS'"
+        (click)="changeCategory('HAMBURGUESAS')">Hamburguesas</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'BOCADILLOS'"
+        (click)="changeCategory('BOCADILLOS')">Bocadillos</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'PERRITOS'"
+        (click)="changeCategory('PERRITOS')">Perritos</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'PLATOS COMBINADOS'"
+        (click)="changeCategory('PLATOS COMBINADOS')">Platos Combinados</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'RACIONES'"
+        (click)="changeCategory('RACIONES')">Raciones</button>
+      <button type="button" class="btn m-1" [class.btn-selected]="selectedCategory === 'POSTRES'"
+        (click)="changeCategory('POSTRES')">Postres</button>
+    </div>
   </div>
   <div id="productList">
     <app-product class="mt-5" *ngFor="let category of productList" [product]="category"></app-product>

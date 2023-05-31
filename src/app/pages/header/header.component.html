@@ -22,7 +22,11 @@
                         </button>
                     </a>
                     <button mat-icon-button class="carrito">
-                        <mat-icon>shopping_cart</mat-icon>
+                        <div *ngIf="isCartaPage" [matBadge]="cartItemsCount" matBadgeSize="small"
+                            matBadgeColor="primary" class="carrito-extra">
+                            <mat-icon>shopping_cart</mat-icon>
+                        </div>
+                        <mat-icon *ngIf="!isCartaPage">shopping_cart</mat-icon>
                     </button>
                 </div>
             </div>

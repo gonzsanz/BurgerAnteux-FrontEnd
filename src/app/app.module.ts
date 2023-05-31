@@ -48,6 +48,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     RegistroComponent,
     LoginComponent,
     SuccesDialogComponent,
+    CarritoComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

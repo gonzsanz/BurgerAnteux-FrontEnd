@@ -17,7 +17,7 @@
     margin: 0 0 20px;
     font-weight: 500;
     font-size: 1.5em;
-    color: $color-amarillo;
+    color: green;
     font-weight: bold;
     text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
   }
@@ -34,7 +34,7 @@
     position: relative;
     border-radius: 50%;
     box-sizing: content-box;
-    border: 4px solid $color-amarillo;
+    border: 4px solid green;
 
     &::before {
       top: 3px;
@@ -64,7 +64,7 @@
 
     .icon-line {
       height: 5px;
-      background-color: $color-amarillo;
+      background-color: green;
       display: block;
       border-radius: 2px;
       position: absolute;
@@ -96,7 +96,7 @@
       border-radius: 50%;
       position: absolute;
       box-sizing: content-box;
-      border: 4px solid $color-amarillo;
+      border: 4px solid green;
     }
 
     .icon-fix {

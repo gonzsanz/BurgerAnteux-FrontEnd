@@ -5,8 +5,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { SuccesDialogComponent } from '../registro/succes-dialog/succes-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +20,13 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   hide = true;
   errorMessage = '';
+  isIncorrect = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -37,19 +42,26 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
     const { email, password } = this.loginForm.value;
     if (this.loginForm.valid) {
       this.authService.login(email, password).subscribe(
         (res: any) => {
-          console.log(res);
-          this.router.navigateByUrl('/carta').then(() => {
-            window.location.reload();
+          this.isIncorrect = false;
+          const dialogRef = this.dialog.open(SuccesDialogComponent, {
+            disableClose: true,
+            data: { message: 'Bienvenido' },
+          });
+
+          timer(2000).subscribe(() => {
+            dialogRef.close();
+            this.router.navigateByUrl('/carta').then(() => {
+              window.location.reload();
+            });
           });
         },
         (err) => {
-          console.log(err);
-          this.errorMessage = err.error.message;
+          this.isIncorrect = true;
+          this.errorMessage = 'El usuario o la contraseña son incorrectos';
         }
       );
     }

@@ -31,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dialog.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
     LoginComponent,
     SuccesDialogComponent,
     CarritoComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

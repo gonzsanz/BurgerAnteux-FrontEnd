@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 
@@ -8,13 +9,21 @@ import { CartService } from 'src/app/shared/services/cart.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  isSessionActive: boolean | undefined;
   isCartaPage: boolean = false;
   badgeCount: number = 0;
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
+    this.authService.checkSession().subscribe((res) => {
+      this.isSessionActive = res;
+    });
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isCartaPage = event.url.includes('/carta');
       }
@@ -24,5 +33,4 @@ export class HeaderComponent {
   get cartItemsCount(): number {
     return this.cartService.cartItemCount;
   }
-
 }

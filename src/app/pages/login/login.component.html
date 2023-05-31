@@ -29,8 +29,8 @@
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Introduzca una contraseña</mat-error>
             <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
           </mat-form-field>
+          <mat-error *ngIf="isIncorrect">{{errorMessage}}</mat-error>
         </div>
-
         <div class="login-confirm">
           <button [disabled]="loginForm.invalid" mat-raised-button type="submit">LOGIN</button>
         </div>

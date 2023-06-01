@@ -4,15 +4,15 @@
     <mat-card-content>
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="formulario">
         <div class="login-nombre mx-5 mb-3">
-          <mat-form-field class="nombre">
+          <mat-form-field class="nombre" color="accent">
             <mat-label>
               <mat-icon>person</mat-icon>
               <span>Nombre</span>
             </mat-label>
-            <input matInput placeholder="Jhon" formControlName="name" required >
+            <input matInput placeholder="Jhon" formControlName="name" required>
             <mat-error *ngIf="userForm.get('name')?.hasError('required')">Introduzca un nombre</mat-error>
           </mat-form-field>
-          <mat-form-field class="apellido">
+          <mat-form-field class="apellido" color="accent">
             <mat-label>
               <mat-icon>person</mat-icon>
               <span>Apellidos</span>
@@ -22,7 +22,7 @@
           </mat-form-field>
         </div>
         <div class="login-email mx-5 mb-3">
-          <mat-form-field class="email">
+          <mat-form-field class="email" color="accent">
             <mat-label>
               <mat-icon>mail</mat-icon>
               <span>Email</span>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="login-address mx-5 mb-3">
-          <mat-form-field class="address">
+          <mat-form-field class="address" color="accent">
             <mat-label>
               <mat-icon>place</mat-icon>
               <span>Dirección</span>
@@ -43,7 +43,7 @@
             <mat-error *ngIf="userForm.get('address')?.hasError('required')">Introduzca una dirección</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="phone">
+          <mat-form-field class="phone" color="accent">
             <mat-label>
               <mat-icon>phone</mat-icon>
               <span>Teléfono</span>
@@ -54,7 +54,7 @@
           </mat-form-field>
         </div>
         <div class="login-password mx-5 mb-3">
-          <mat-form-field class="password">
+          <mat-form-field class="password" color="accent">
             <mat-label>
               <mat-icon>lock</mat-icon>
               <span>Contraseña</span>
@@ -67,7 +67,7 @@
             <mat-error *ngIf="userForm.get('password')?.hasError('required')">Introduzca una contraseña</mat-error>
             <mat-error *ngIf="userForm.get('password')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
           </mat-form-field>
-          <mat-form-field class="password2">
+          <mat-form-field class="password2" color="accent">
             <mat-label>
               <mat-icon>lock</mat-icon>
               <span>Repetir contraseña</span>
@@ -87,7 +87,8 @@
 
         <div class="login-confirm">
           <button [disabled]="userForm.invalid" mat-raised-button type="submit">ACTUALIZAR DATOS</button>
-          <button class="sesion" mat-raised-button type="button" (click)="cerrarSesion()"> <mat-icon>logout</mat-icon> CERRAR SESIÓN</button>
+          <button class="sesion" mat-raised-button type="button" (click)="cerrarSesion()"> <mat-icon>logout</mat-icon>
+            CERRAR SESIÓN</button>
         </div>
       </form>
     </mat-card-content>

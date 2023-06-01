@@ -61,10 +61,38 @@ header {
 
 }
 
-mat-menu {
-  z-index: 1000;
-
+.dropdown {
+  position: relative;
+  display: inline-block;
+  .dropdown-content {
+    &.show{
+      display: block;
+    }
+    display: none;
+    position: absolute;
+    background-color: $color-negro;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    a {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: $color-amarillo;
+      padding: 10px;
+      text-decoration: none;
+      &:hover {
+         background-color: rgb(65, 65, 65);
+      } 
+    }
+  }
+  &:hover .dropdown-content {
+    display: block;
+  }
 }
+
 
 .carrito {
   display: flex;

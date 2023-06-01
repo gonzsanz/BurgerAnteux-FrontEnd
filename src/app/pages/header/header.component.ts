@@ -40,4 +40,5 @@ export class HeaderComponent {
   get cartItemsCount(): number {
     return this.cartService.cartItemCount;
   }
+
 }

@@ -34,6 +34,7 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PedidoComponent } from './pages/pedido/pedido.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SuccesDialogComponent,
     CarritoComponent,
     PerfilComponent,
+    PedidoComponent,
   ],
   imports: [
     BrowserModule,

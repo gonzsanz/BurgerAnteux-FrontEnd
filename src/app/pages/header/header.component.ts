@@ -30,7 +30,15 @@ export class HeaderComponent {
     });
   }
 
+  cerrarSesion() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('/').then(() => {
+      window.location.reload();
+    });
+  }
+
   get cartItemsCount(): number {
     return this.cartService.cartItemCount;
   }
+
 }

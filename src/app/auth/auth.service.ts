@@ -12,6 +12,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     sessionStorage.setItem('email', email);
+    sessionStorage.setItem('password', password);
     return this.httpClient
       .post(`${this.api}/login`, { email, password })
       .pipe(map((res: any) => res));

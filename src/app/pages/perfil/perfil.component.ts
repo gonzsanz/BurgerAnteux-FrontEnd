@@ -62,9 +62,9 @@ export class PerfilComponent {
           Validators.required,
           Validators.pattern('^[0-9]{9}$'),
         ]),
+
         // checkbox para cambiar contraseña
         changePassword: new FormControl(false),
-
         currentPassword: new FormControl({ value: '', disabled: true }, [
           this.validateCurrentPassword.bind(this),
         ]),
@@ -74,18 +74,20 @@ export class PerfilComponent {
       { validator: this.passwordMatchValidator }
     );
 
-    // Escuchar cambios en el campo de selección de cambiar contraseña
     this.userForm.get('changePassword')?.valueChanges.subscribe((value) => {
       if (value) {
+
         // Habilitar los campos de contraseña si el usuario selecciona cambiarla
         this.userForm.get('currentPassword')?.enable();
         this.userForm.get('newPassword')?.enable();
         this.userForm.get('confirmPassword')?.enable();
       } else {
+
         // Deshabilitar los campos de contraseña si el usuario no selecciona cambiarla
         this.userForm.get('currentPassword')?.disable();
         this.userForm.get('newPassword')?.disable();
         this.userForm.get('confirmPassword')?.disable();
+
         // Reiniciar los valores de los campos de contraseña
         this.userForm.get('currentPassword')?.setValue('');
         this.userForm.get('newPassword')?.setValue('');
@@ -135,14 +137,11 @@ export class PerfilComponent {
       const address = this.userForm.get('address')?.value;
       let password = '';
 
-      // Obtener el estado del checkbox de cambio de contraseña
       const isChangePassword = this.userForm.get('changePassword')?.value;
 
       if (isChangePassword) {
-        // Si se seleccionó cambiar contraseña, obtener la nueva contraseña
         password = this.userForm.get('newPassword')?.value;
       } else {
-        // Si no se seleccionó cambiar contraseña, obtener la contraseña actual
         password = sessionStorage.getItem('password') || '';
       }
 
@@ -153,7 +152,7 @@ export class PerfilComponent {
         email: email,
         phone: phone,
         address: address,
-        password: password, // Agregar la contraseña al objeto de datos
+        password: password,
       };
 
       console.log(userData);

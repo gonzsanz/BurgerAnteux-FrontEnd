@@ -19,8 +19,10 @@ export class UserService {
   }
 
   getUser(email: string): Observable<any> {
-    return this.httpClient.get(
-      `http://localhost:8080/api/users/${email}`
-    );
+    return this.httpClient.get(`http://localhost:8080/api/users/${email}`);
+  }
+
+  getStoredPassword() {
+    return sessionStorage.getItem('password');
   }
 }

@@ -9,7 +9,7 @@
               <mat-icon>person</mat-icon>
               <span>Nombre</span>
             </mat-label>
-            <input matInput placeholder="Jhon" formControlName="name" required >
+            <input matInput placeholder="Jhon" formControlName="name" required>
             <mat-error *ngIf="userForm.get('name')?.hasError('required')">Introduzca un nombre</mat-error>
           </mat-form-field>
           <mat-form-field class="apellido">
@@ -57,27 +57,55 @@
           <mat-form-field class="password">
             <mat-label>
               <mat-icon>lock</mat-icon>
-              <span>Contraseña</span>
+              <span>Contraseña actual</span>
             </mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required minlength="8">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="currentPassword" required
+              minlength="8">
             <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-            <mat-error *ngIf="userForm.get('password')?.hasError('required')">Introduzca una contraseña</mat-error>
-            <mat-error *ngIf="userForm.get('password')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
+            <mat-error *ngIf="userForm.get('currentPassword')?.hasError('required')">Introduzca una
+              contraseña</mat-error>
+            <mat-error *ngIf="userForm.get('currentPassword')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
+            <mat-error *ngIf="userForm.get('currentPassword')?.hasError('incorrectPassword')">
+              Contraseña actual incorrecta
+            </mat-error>
+          </mat-form-field>
+
+          <div class="changePassword">
+            <mat-checkbox formControlName="changePassword">Cambiar contraseña</mat-checkbox>
+
+          </div>
+
+
+        </div>
+        <div class="login-password mx-5 mb-3">
+          <mat-form-field class="password">
+            <mat-label>
+              <mat-icon>lock</mat-icon>
+              <span>Nueva contraseña</span>
+            </mat-label>
+            <input matInput [type]="hide3 ? 'password' : 'text'" formControlName="newPassword" required minlength="8">
+            <button type="button" mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide3">
+              <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="userForm.get('newPassword')?.hasError('required')">Introduzca una contraseña</mat-error>
+            <mat-error *ngIf="userForm.get('newPassword')?.hasError('minlength')">Al menos 8 caracteres</mat-error>
           </mat-form-field>
           <mat-form-field class="password2">
             <mat-label>
               <mat-icon>lock</mat-icon>
               <span>Repetir contraseña</span>
             </mat-label>
-            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="password2" required minlength="8">
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword" required
+              minlength="8">
             <button type="button" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide2">
               <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-            <mat-error *ngIf="userForm.get('password2')?.hasError('passwordMismatch')">
+            <mat-error *ngIf="userForm.get('confirmPassword')?.hasError('passwordMismatch')">
               Las contraseñas no coinciden
             </mat-error>
 
@@ -87,7 +115,8 @@
 
         <div class="login-confirm">
           <button [disabled]="userForm.invalid" mat-raised-button type="submit">ACTUALIZAR DATOS</button>
-          <button class="sesion" mat-raised-button type="button" (click)="cerrarSesion()"> <mat-icon>logout</mat-icon> CERRAR SESIÓN</button>
+          <button class="sesion" mat-raised-button type="button" (click)="cerrarSesion()"> <mat-icon>logout</mat-icon>
+            CERRAR SESIÓN</button>
         </div>
       </form>
     </mat-card-content>

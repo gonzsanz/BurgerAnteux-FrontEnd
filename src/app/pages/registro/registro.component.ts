@@ -40,7 +40,7 @@ export class RegistroComponent implements OnInit {
         address: new FormControl('', Validators.required),
         phone: new FormControl('', [
           Validators.required,
-          Validators.pattern('^[0-9]*$'),
+          Validators.pattern('^[0-9]{9}$'),
         ]),
         password: new FormControl('', Validators.required),
         password2: new FormControl('', Validators.required),

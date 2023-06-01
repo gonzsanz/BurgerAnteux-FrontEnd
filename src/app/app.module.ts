@@ -33,6 +33,7 @@ import { SuccesDialogComponent } from './pages/registro/succes-dialog/succes-dia
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatCardModule,
     MatBadgeModule,
     MatMenuModule,
+    MatCheckboxModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

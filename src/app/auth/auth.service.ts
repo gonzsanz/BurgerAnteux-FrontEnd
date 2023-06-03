@@ -11,8 +11,6 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   login(email: string, password: string) {
-    sessionStorage.setItem('email', email);
-    sessionStorage.setItem('password', password);
     return this.httpClient
       .post(`${this.api}/login`, { email, password })
       .pipe(map((res: any) => res));

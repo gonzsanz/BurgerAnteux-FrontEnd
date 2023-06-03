@@ -1,0 +1,64 @@
+<!-- <div class="image-container">
+
+  <div class="content">
+    <div class="row d-flex">
+
+      <h1>HISTORIAL DE PEDIDOS</h1>
+
+      <mat-table [dataSource]="dataSource" class="trasparent-table">
+        <ng-container matColumnDef="order_id">
+          <mat-header-cell *matHeaderCellDef>Nº Pedido</mat-header-cell>
+          <mat-cell *matCellDef="let pedido">{{ pedido.order_id }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+          <mat-cell *matCellDef="let pedido">{{ pedido.date }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="comments">
+          <mat-header-cell *matHeaderCellDef>Comentario</mat-header-cell>
+          <mat-cell *matCellDef="let pedido">{{ pedido.comments }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef>Dirección</mat-header-cell>
+          <mat-cell *matCellDef="let pedido">{{ pedido.address }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+          <mat-header-cell *matHeaderCellDef>Dirección</mat-header-cell>
+          <mat-cell *matCellDef="let pedido">{{ pedido.address }}</mat-cell>
+        </ng-container>
+
+        Mostrar las columnas en la tabla
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+
+</div> -->
+
+<div class="ultimoPedido">
+  <h2>Mis últimos pedidos</h2>
+  <div *ngFor="let pedido of pedidos" class="listaPedidos">
+    <mat-list role="list" class="pedido">
+      <mat-list-item class="date"><span>{{ pedido.date }}</span> </mat-list-item>
+      <div class="detalles">
+
+        <div *ngFor="let detalle of detalles" class="detalles">
+          <mat-list-item class="item">
+            <span>{{ detalle.cantidad }}x </span>
+            <span>{{ detalle.producto }}</span>
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-list>
+    <div class="repetirPedido">
+      <button mat-raised-button color="primary">Repetir pedido</button>
+    </div>
+
+  </div>
+</div>

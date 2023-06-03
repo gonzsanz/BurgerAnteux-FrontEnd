@@ -91,9 +91,7 @@ export class RegistroComponent implements OnInit {
         (error) => {
           console.log('Error al agregar usuario', error);
 
-          if (error.error.message.includes('email')) {
-            alert('El correo ya existe');
-          }
+          alert("Usuario ya registrado")
         }
       );
     }

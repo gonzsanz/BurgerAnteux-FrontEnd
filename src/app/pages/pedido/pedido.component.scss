@@ -1,0 +1,71 @@
+@import '../../variables.scss';
+
+.ultimoPedido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/bocata.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  min-width: 100%;
+
+  h2 {
+    font-size: calc(1.5rem + 1vw);
+    font-family: $fuente-anteux;
+    font-weight: bold;
+    margin: 1rem;
+    text-align: center;
+    width: calc(100% - 40px);
+    color: $color-amarillo;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+  }
+
+  .listaPedidos {
+    width: calc(100% - 40px);
+  }
+
+  mat-list-item {
+
+    span {
+      color: $color-blanco;
+
+    }
+  }
+
+  .pedido {
+
+    margin-bottom: 1rem;
+
+    .date {
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: auto;
+      background-color: $color-negro;
+
+      span {
+        margin: auto;
+        height: auto;
+        color: $color-amarillo;
+
+      }
+    }
+
+
+    .detalles {
+      background-color: rgba(116, 116, 116, 0.4);
+      backdrop-filter: blur(5px);
+      font-size: 14px;
+      line-height: 22px;
+      color: #fff;
+      height: auto;
+    }
+  }
+
+  .repetirPedido {
+    margin-bottom: 1rem;
+  }
+}

@@ -34,7 +34,8 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { PedidoComponent } from './pages/pedido/pedido.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SuccesDialogComponent,
     CarritoComponent,
     PerfilComponent,
+    PedidoComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatBadgeModule,
     MatMenuModule,
     MatCheckboxModule,
+    MatTableModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

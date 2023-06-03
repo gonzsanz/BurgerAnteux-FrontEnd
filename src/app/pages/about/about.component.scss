@@ -1,0 +1,24 @@
+@import "../../variables.scss";
+
+.container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: justify;
+
+  h2,
+  h3 {
+    font-family: $fuente-anteux;
+    color: $color-negro;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column;
+  }
+}

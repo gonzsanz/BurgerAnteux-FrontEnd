@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(email, password).subscribe(
         (res: any) => {
+          sessionStorage.setItem('email', email);
+          sessionStorage.setItem('password', password);
           this.isIncorrect = false;
           const dialogRef = this.dialog.open(SuccesDialogComponent, {
             disableClose: true,

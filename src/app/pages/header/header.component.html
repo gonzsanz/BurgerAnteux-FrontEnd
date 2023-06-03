@@ -42,7 +42,7 @@
               <mat-icon>person</mat-icon>
             </button>
           </a>
-          <button mat-icon-button class="carrito">
+          <button mat-icon-button class="carrito" (click)="openCart()">
             <div *ngIf="isCartaPage" [matBadge]="cartItemsCount" matBadgeSize="small" matBadgeColor="primary"
               class="carrito-extra">
               <mat-icon>shopping_cart</mat-icon>

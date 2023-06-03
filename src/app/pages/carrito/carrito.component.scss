@@ -1,0 +1,16 @@
+.dialog {
+  margin: 0 40px 10px 40px;
+}
+
+.close {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  color: #000;
+}

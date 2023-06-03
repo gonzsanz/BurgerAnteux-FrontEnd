@@ -26,7 +26,8 @@ export class DialogComponent {
   }
 
   public addToCart(): void {
-    this.cartService.addItemToCart();
+    this.cartService.addToCart(this.product, this.quantity);
+    this.cartService.addItem();
     this.dialogRef.close();
   }
 

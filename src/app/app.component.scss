@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -5,4 +7,17 @@
   .content {
     flex: 1;
   }
+}
+
+#scroll-to-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: none;
+  background-color: $color-amarillo;
+  color: $color-negro;
+}
+
+#scroll-to-top.show {
+  display: block;
 }

@@ -1,39 +1,37 @@
 <div class="close">
-    <button mat-icon-button (click)="close()">
-        <mat-icon>close</mat-icon>
-    </button>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
 <div class="dialog">
-    <h2 class="dialog-title">Resumen de tu pedido: </h2>
+  <h2 class="dialog-title">Resumen de tu pedido:</h2>
 
-    <mat-dialog-content>
+  <mat-dialog-content>
+    <div class="row">
+      <div class="col-6">
+        <p class="price">Producto</p>
+      </div>
+      <div class="col-6">
+        <p class="price">Precio</p>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-6">
-                <p class="price">Producto</p>
-            </div>
-            <div class="col-6">
-                <p class="price">Precio</p>
-            </div>
-        </div>
+    <div class="row" *ngFor="let item of cart">
+      <div class="col-6">
+        <p class="price">{{ getQuantity(item.product_id) }}x {{ item.name }}</p>
+      </div>
+      <div class="col-6">
+        <p class="price">{{ item.price | number: '1.2' }}€</p>
+      </div>
+    </div>
 
-        <div class="row" *ngFor="let item of cart">
-            <div class="col-6">
-                <p class="price">{{item.product.name}}</p>
-            </div>
-            <div class="col-6">
-                <p class="price">{{item.product.price | number:'1.2'}}€</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <p class="price">Total</p>
-            </div>
-            <div class="col-6">
-                <p class="price">€</p>
-            </div>
-        </div>
-
-    </mat-dialog-content>
+    <!-- <div class="row">
+      <div class="col-6">
+        <p class="price">Total</p>
+      </div>
+      <div class="col-6">
+        <p class="price">{{ total | number: '1.2' }}€</p>
+      </div>
+    </div> -->
+  </mat-dialog-content>
 </div>

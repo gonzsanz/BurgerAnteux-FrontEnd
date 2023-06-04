@@ -6,28 +6,22 @@ import { CartService } from 'src/app/shared/services/cart.service';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.scss']
+  styleUrls: ['./carrito.component.scss'],
 })
 export class CarritoComponent {
-
-  cart: { product: Product, quantity: number }[] = [];
-  quantity: number = 0;
+  cart = this.cartService.getItems();
 
   constructor(
-    private cartService: CartService,
     public dialogRef: MatDialogRef<CarritoComponent>,
-    @Inject(MAT_DIALOG_DATA) public product: Product
-  ) { 
-    this.quantity = this.cartService.cartQuantity;
-   }
+    @Inject(MAT_DIALOG_DATA) public data: Product,
+    private cartService: CartService
+  ) {}
 
-  ngOnInit(): void {
-    this.cartService.getCart().subscribe(cart => {
-      this.cart = cart;
-    });
-  }
-
-  close() : void {
+  close(): void {
     this.dialogRef.close();
+  }
+  
+  getQuantity(productId: number): number {
+    return this.cartService.getQuantity(productId);
   }
 }

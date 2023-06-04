@@ -3,22 +3,23 @@ import { Observable, Subject } from 'rxjs';
 import { Product } from '../interfaces/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   cartItemCount = 0;
   quantity = 1;
   cartQuantity = 0;
-  
-  cart: { product: Product, quantity: number }[] = [];
 
-  private cartUpdated = new Subject<{ product: Product, quantity: number }[]>();
+  cart: { product: Product; quantity: number }[] = [];
 
+  private cartUpdated = new Subject<{ product: Product; quantity: number }[]>();
 
-  constructor() { }
+  constructor() {}
 
-addToCart(product: Product, quantity: number): void {
-    const existingItem = this.cart.find(item => item.product.product_id === product.product_id);
+  addToCart(product: Product, quantity: number): void {
+    const existingItem = this.cart.find(
+      (item) => item.product.product_id === product.product_id
+    );
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
@@ -27,16 +28,12 @@ addToCart(product: Product, quantity: number): void {
     this.cartUpdated.next(this.cart);
   }
 
-  getCart(): Observable<{ product: Product, quantity: number }[]> {
+  getCart(): Observable<{ product: Product; quantity: number }[]> {
     return this.cartUpdated.asObservable();
   }
-
 
   //guardar la cantidad de productos que se agregan al carrito -- unitario
   addItem(): void {
     this.cartItemCount++;
   }
-
-
-
 }

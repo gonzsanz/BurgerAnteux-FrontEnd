@@ -1,5 +1,22 @@
 @import "../../variables.scss";
 
+.image-container {
+  position: relative;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("../../../assets/huevos-rotos.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100%;
+  .content {
+    display: flex;
+  }
+}
 .container {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -8,7 +25,16 @@
   h2,
   h3 {
     font-family: $fuente-anteux;
-    color: $color-negro;
+    color: white;
+  }
+
+  p {
+    color: white;
+  }
+
+  .burguer {
+    width: 65%;
+    height: auto;
   }
 
   .img-fluid {
@@ -18,6 +44,9 @@
 }
 
 @media (max-width: 767px) {
+  .container {
+    margin: 2rem;
+  }
   .row {
     flex-direction: column;
   }

@@ -1,5 +1,12 @@
+@import "../../variables.scss";
+
+.content {
+  background-color: $color-negro;
+}
+
 .dialog {
-  margin: 0 40px 10px 40px;
+  margin: 0;
+  padding: 0;
 }
 
 .close {
@@ -7,11 +14,64 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  color: $color-blanco;
 }
 
 .dialog-title {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 0;
-  color: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: $color-amarillo;
+  font-family: $fuente-anteux;
+  padding-bottom: 2rem;
+  margin: 0;
+}
+.titulos {
+  padding-bottom: 1.5rem;
+  .title {
+    color: $color-blanco;
+    font-family: $fuente-anteux;
+    font-size: 1.5rem;
+  }
+}
+.container-products {
+  .products {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .product-qty {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: $color-blanco;
+      margin-bottom: 0.8rem;
+    }
+    .price {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      color: $color-blanco;
+      margin-bottom: 0.8rem;
+    }
+    .papelera {
+      display: flex;
+      justify-content: flex-start;
+      color: $color-amarillo;
+      padding-bottom: 0.8rem;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.totales {
+  .title {
+    color: $color-blanco;
+    font-family: $fuente-anteux;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
 }

@@ -41,10 +41,16 @@ export class DialogProductoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.empForm.valid) {
+      const formData = this.empForm.value;
+
+      // Convertir los valores a mayúsculas
+      formData.name = formData.name.toUpperCase();
+      formData.description = formData.description.toUpperCase();
+
       if (this.data) {
         const product_id = this.data.product_id;
-        this.empForm.value.product_id = product_id;
-        this.productService.updateProduct(this.empForm.value).subscribe({
+        formData.product_id = product_id;
+        this.productService.updateProduct(formData).subscribe({
           next: (data: any) => {
             console.log(data);
             alert('Producto actualizado correctamente');

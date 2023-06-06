@@ -26,14 +26,23 @@ export class AdminComponent implements OnInit {
     'description',
     'action',
   ];
+  displayedColumns2: string[] = [
+    'id',
+    'date',
+    'quantity',
+    'address',
+    'comments',
+    'state',
+  ];
   dataSource!: MatTableDataSource<any>;
+  orderDataSource!: MatTableDataSource<any>;
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  showProductList: boolean = true;
-  showOrderList: boolean = false;
+  showProductList: boolean = false;
+  showOrderList: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -43,6 +52,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.getAllProducts();
+    this.getAllOrders();
   }
 
   openAddEditProductDialog(): void {
@@ -120,8 +130,10 @@ export class AdminComponent implements OnInit {
 
   public getAllOrders(): void {
     this.pedidoService.obtenerPedidos().subscribe(
-      (orders: any[]) => {
-        this.orderList = orders;
+      (orders: Pedido[]) => {
+        this.orderDataSource = new MatTableDataSource(orders);
+        this.orderDataSource.sort = this.sort;
+        this.orderDataSource.paginator = this.paginator;
       },
       (error: Error) => {
         console.log('Error: ', error);
@@ -135,6 +147,14 @@ export class AdminComponent implements OnInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+  orderApplyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.orderDataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.orderDataSource.paginator) {
+      this.orderDataSource.paginator.firstPage();
     }
   }
 }

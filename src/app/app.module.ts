@@ -41,6 +41,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DialogProductoComponent } from './pages/admin/dialog-producto/dialog-producto.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSidenavModule,
     MatToolbarModule,
     MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

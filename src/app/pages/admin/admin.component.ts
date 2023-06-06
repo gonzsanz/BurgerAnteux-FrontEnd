@@ -6,6 +6,9 @@ import { PedidoService } from 'src/app/shared/services/pedido.service';
 import { Pedido } from 'src/app/shared/interfaces/pedido';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogProductoComponent } from './dialog-producto/dialog-producto.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-admin',
@@ -13,9 +16,22 @@ import { DialogProductoComponent } from './dialog-producto/dialog-producto.compo
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
   productList: Product[] | undefined;
   orderList: Pedido[] | undefined;
+
+  displayedColumns: string[] = [
+    'product_id',
+    'name',
+    'price',
+    'category',
+    'description',
+    'action'
+  ];
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   showProductList: boolean = true;
   showOrderList: boolean = false;
@@ -23,7 +39,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private pedidoService: PedidoService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
@@ -53,7 +69,10 @@ export class AdminComponent implements OnInit {
   private getAllProducts(): void {
     this.productService.getProducts().subscribe(
       (products: Product[]) => {
-        this.productList = products;
+        // this.productList = products;
+        this.dataSource = new MatTableDataSource(products);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       },
       (error: Error) => {
         console.log('Error: ', error);
@@ -70,5 +89,14 @@ export class AdminComponent implements OnInit {
         console.log('Error: ', error);
       }
     );
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

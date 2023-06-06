@@ -1,5 +1,7 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-dialog-producto',
@@ -18,7 +20,11 @@ export class DialogProductoComponent {
     'POSTRES',
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private productService: ProductService,
+    private dialog: DialogRef<DialogProductoComponent>,
+  ) {}
 
   ngOnInit(): void {
     this.empForm = this.formBuilder.group({
@@ -31,7 +37,22 @@ export class DialogProductoComponent {
 
   onSubmit(): void {
     if (this.empForm.valid) {
-      console.log(this.empForm.value);
+      // console.log(this.empForm.value);
+      this.productService.addProduct(this.empForm.value).subscribe({
+        next: (data: any) => {
+          console.log(data);
+          alert('Producto añadido correctamente');
+          this.dialog.close();
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      }
+      );
     }
+  }
+
+  close(): void {
+    this.dialog.close();
   }
 }

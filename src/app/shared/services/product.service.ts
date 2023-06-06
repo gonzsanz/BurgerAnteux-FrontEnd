@@ -24,4 +24,14 @@ export class ProductService {
   public addProduct(product: Product): Observable<any> {
     return this.httpClient.post<any>(`${environment.apiUrl}/add`, product);
   }
+
+  public deleteProduct(product_id: number): Observable<any> {
+    return this.httpClient.delete<any>(
+      `${environment.apiUrl}/delete/${product_id}`
+    );
+  }
+
+  public updateProduct(product: Product): Observable<any> {
+    return this.httpClient.put<any>(`${environment.apiUrl}/update`, product);
+  }
 }

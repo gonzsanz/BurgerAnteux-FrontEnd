@@ -20,12 +20,11 @@ export class AdminComponent implements OnInit {
   orderList: Pedido[] | undefined;
 
   displayedColumns: string[] = [
-    'product_id',
     'name',
     'price',
     'category',
     'description',
-    'action'
+    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -47,7 +46,28 @@ export class AdminComponent implements OnInit {
   }
 
   openAddEditProductDialog(): void {
-    this.dialog.open(DialogProductoComponent);
+    const dialogRef = this.dialog.open(DialogProductoComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.getAllProducts();
+        }
+      },
+    });
+  }
+
+  openEditProductDialog(data: any): void {
+    const dialogRef = this.dialog.open(DialogProductoComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.getAllProducts();
+        }
+      },
+    });
   }
 
   public showProducts(): void {
@@ -66,10 +86,28 @@ export class AdminComponent implements OnInit {
     this.sidenav.toggle();
   }
 
+  public deleteProduct(product_id: number): void {
+    const confirmDelete = confirm(
+      '¿Estás seguro de que deseas eliminar este producto?'
+    );
+
+    if (confirmDelete) {
+      this.productService.deleteProduct(product_id).subscribe(
+        (response: any) => {
+          console.log('Response: ', response);
+          alert('Producto eliminado');
+          this.getAllProducts();
+        },
+        (error: Error) => {
+          console.log('Error: ', error);
+        }
+      );
+    }
+  }
+
   private getAllProducts(): void {
     this.productService.getProducts().subscribe(
       (products: Product[]) => {
-        // this.productList = products;
         this.dataSource = new MatTableDataSource(products);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

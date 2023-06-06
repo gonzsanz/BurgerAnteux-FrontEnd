@@ -1,6 +1,7 @@
-import { DialogRef } from '@angular/cdk/dialog';
-import { Component } from '@angular/core';
+import { Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './dialog-producto.component.html',
   styleUrls: ['./dialog-producto.component.scss'],
 })
-export class DialogProductoComponent {
+export class DialogProductoComponent implements OnInit {
   empForm!: FormGroup;
   categories: string[] = [
     'ESPECIALIDADES',
@@ -23,7 +24,8 @@ export class DialogProductoComponent {
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private dialog: DialogRef<DialogProductoComponent>,
+    private dialog: MatDialogRef<DialogProductoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
@@ -33,22 +35,37 @@ export class DialogProductoComponent {
       category: '',
       description: '',
     });
+
+    this.empForm.patchValue(this.data);
   }
 
   onSubmit(): void {
     if (this.empForm.valid) {
-      // console.log(this.empForm.value);
-      this.productService.addProduct(this.empForm.value).subscribe({
-        next: (data: any) => {
-          console.log(data);
-          alert('Producto añadido correctamente');
-          this.dialog.close();
-        },
-        error: (error) => {
-          console.error(error);
-        }
+      if (this.data) {
+        const product_id = this.data.product_id;
+        this.empForm.value.product_id = product_id;
+        this.productService.updateProduct(this.empForm.value).subscribe({
+          next: (data: any) => {
+            console.log(data);
+            alert('Producto actualizado correctamente');
+            this.dialog.close(true);
+          },
+          error: (error) => {
+            console.error(error);
+          },
+        });
+      } else {
+        this.productService.addProduct(this.empForm.value).subscribe({
+          next: (data: any) => {
+            console.log(data);
+            alert('Producto añadido correctamente');
+            this.dialog.close(true);
+          },
+          error: (error) => {
+            console.error(error);
+          },
+        });
       }
-      );
     }
   }
 

@@ -1,17 +1,34 @@
 @import '../../../app/variables.scss';
 
 mat-toolbar-row {
-  justify-content: space-between;
+  display: flex;
+  align-items: center;
   background-color: #000;
   color: $color-amarillo;
 
   h1 {
-
+    font-family: $fuente-anteux;
+    margin: 0 auto;
     font-size: calc(1rem + 1vh);
   }
 
   .example-spacer {
     flex: 1 1 auto;
+  }
+
+  .btn {
+    margin: 0 10px;
+    color: $color-negro;
+    background-color: $color-amarillo;
+    font-size: calc(1rem + .6vh);
+    font-family: $fuente-anteux;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
   }
 }
 
@@ -24,9 +41,21 @@ mat-toolbar-row {
     width: 100%;
   }
 
-  // .acciones {
-  //   display: flex;
-  //   align-items: center;
-  //   vertical-align: middle;
-  // }
+
+  .acciones {
+    div {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+h2 {
+  font-size: calc(3rem + .6vh);
+  margin: 20px 0px;
+  text-align: center;
+  font-family: $fuente-anteux;
+  font-weight: bold;
 }

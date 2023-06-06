@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -20,6 +21,11 @@ const routes: Routes = [
   { path: 'register', component: RegistroComponent, pathMatch: 'full' },
   { path: 'perfil', component: PerfilComponent, pathMatch: 'full' },
   { path: 'mispedidos', component: PedidoComponent, pathMatch: 'full' },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    pathMatch: 'full',
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

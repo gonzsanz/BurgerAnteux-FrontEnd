@@ -1,0 +1,15 @@
+@import '../../../app/variables.scss';
+
+mat-toolbar-row {
+  justify-content: space-between;
+  background-color: #000;
+  color: $color-amarillo;
+  h1 {
+
+    font-size: calc(1rem + 1vh);
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+}

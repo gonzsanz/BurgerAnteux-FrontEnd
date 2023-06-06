@@ -1,0 +1,37 @@
+<div mat-dialog-title>
+  <h1>Añadir producto</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field color="accent">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" placeholder="Nombre" formControlName="name">
+      </mat-form-field>
+      <mat-form-field color="accent">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" placeholder="Precio" formControlName="price">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field color="accent">
+        <mat-label>Categoría</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let val of categories" [value]="val">{{val}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field color="accent">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput rows="6" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="button">
+      <mat-icon>add_photo_alternate</mat-icon>
+      Cargar imagen
+    </button>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button>Cancelar</button>
+    <button mat-raised-button color="accent" type="submit">Guardar</button>
+  </div>
+</form>

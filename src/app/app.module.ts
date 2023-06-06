@@ -36,6 +36,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { MatTableModule } from '@angular/material/table';
+import { AdminComponent } from './pages/admin/admin.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { DialogProductoComponent } from './pages/admin/dialog-producto/dialog-producto.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -55,6 +60,8 @@ import { MatTableModule } from '@angular/material/table';
     CarritoComponent,
     PerfilComponent,
     PedidoComponent,
+    AdminComponent,
+    DialogProductoComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +83,9 @@ import { MatTableModule } from '@angular/material/table';
     MatMenuModule,
     MatCheckboxModule,
     MatTableModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatSelectModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

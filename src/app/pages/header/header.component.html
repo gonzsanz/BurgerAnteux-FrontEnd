@@ -10,7 +10,7 @@
       <div class="logo">
         <a [routerLink]="['/inicio']">
           <div class="d-flex">
-            <img src="assets/logoblanco.png" alt="Logo web">
+            <img src="assets/logoblanco.png" alt="Logo web" />
           </div>
         </a>
       </div>
@@ -32,9 +32,7 @@
               <a class="mis-pedidos" [routerLink]="['/mispedidos']">
                 <mat-icon>shopping_bag</mat-icon>Pedidos
               </a>
-              <a (click)="cerrarSesion()">
-                <mat-icon>logout</mat-icon>Salir
-              </a>
+              <a (click)="cerrarSesion()"> <mat-icon>logout</mat-icon>Salir </a>
             </div>
           </div>
           <a *ngIf="!isSessionActive" [routerLink]="['/login']">
@@ -42,13 +40,17 @@
               <mat-icon>person</mat-icon>
             </button>
           </a>
-          <button mat-icon-button class="carrito" (click)="openCart()">
-            <div *ngIf="isCartaPage" [matBadge]="cartItemsCount" matBadgeSize="small" matBadgeColor="primary"
-              class="carrito-extra">
+          <button mat-icon-button class="carrito" (click)="openCart()" *ngIf="isCartaPage; else redirectToCart">
+            <div [matBadge]="cartItemsCount" matBadgeSize="small" matBadgeColor="primary" class="carrito-extra">
               <mat-icon>shopping_cart</mat-icon>
             </div>
-            <mat-icon *ngIf="!isCartaPage">shopping_cart</mat-icon>
           </button>
+
+          <ng-template #redirectToCart>
+            <a class="carrito" mat-icon-button routerLink="/carta">
+              <mat-icon>shopping_cart</mat-icon>
+            </a>
+          </ng-template>
         </div>
       </div>
       <div class="navbar-collapse collapse order-md-2" id="collapsibleNavbar">

@@ -14,7 +14,12 @@
       <div class="container-products">
         <div class="products" *ngFor="let item of cart; index as i">
           <div class="product-qty">
-            <p>{{ getQuantity(item.product_id) }}x {{ item.name }}</p>
+            <div class="qty">
+              <p>{{ getQuantity(item.product_id) }}x &nbsp;</p>
+            </div>
+            <div class="product">
+              <p>{{ item.name }}</p>
+            </div>
           </div>
           <div class="price">
             <p>
@@ -28,6 +33,11 @@
       </div>
       <div class="totales">
         <p class="title">Total: {{ getTotal() | number : "1.2" }}€</p>
+      </div>
+      <div class="pago">
+        <div class="boton-pago">
+          <button class="btn">Pagar</button>
+        </div>
       </div>
     </mat-dialog-content>
   </div>

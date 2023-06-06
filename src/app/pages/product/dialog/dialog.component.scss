@@ -1,3 +1,5 @@
+@import "../../../variables.scss";
+
 .dialog {
   margin: 0 40px 10px 40px;
 }
@@ -10,13 +12,20 @@
 }
 
 .dialog-title {
+  font-family: "Heebo", sans-serif;
   font-size: 20px;
   font-weight: bold;
   padding: 0;
+  color: $color-negro;
+}
+
+.description {
+  font-family: "Heebo", sans-serif;
   color: #000;
 }
 
 .price {
+  font-family: "Heebo", sans-serif;
   font-size: 20px;
   color: #000;
 }
@@ -37,12 +46,12 @@
 
   button {
     margin: 5px;
-    color: #F4E10B;
+    color: #f4e10b;
   }
 }
 
 .añadir {
-  background-color: #F4E10B;
+  background-color: #f4e10b;
   display: block;
   margin: 0 auto;
   min-width: calc(100% - 20px);
@@ -51,12 +60,13 @@
   border-radius: 25px;
   font-weight: bold;
   color: #000;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
 }
 
 .cantidad {
   font-size: 30px;
+  font-family: "Heebo", sans-serif;
   font-weight: bold;
   text-align: center;
   padding: 0;

@@ -1,4 +1,3 @@
-
 .button-container {
   display: flex;
   flex-direction: row;
@@ -10,7 +9,6 @@
     font-weight: bold;
     color: #fff;
     margin: 0;
-
   }
 }
 
@@ -18,9 +16,8 @@
   display: flex;
   flex-direction: column;
   background-color: #161616;
-  border: 1px solid #fff;
   padding: 3px;
-  box-shadow: 0 0 10px #161616;
+  box-shadow: 0 1px 10px #777676;
 }
 
 .card-body {
@@ -37,7 +34,7 @@
 
 .cart {
   cursor: pointer;
-  background-color: #F4E10B;
+  background-color: #f4e10b;
   border: 1px solid black;
   border-radius: 25px;
   font-weight: bold;

@@ -114,8 +114,6 @@
                 <td mat-cell *matCellDef="let order">{{ order.date | date:'dd/MM/yyyy HH:mm' }}</td>
               </ng-container>
 
-
-
               <!-- Address Column -->
               <ng-container matColumnDef="address">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
@@ -133,7 +131,7 @@
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </th>
                 <td mat-cell *matCellDef="let order">
-                  <button mat-icon-button color="accent">
+                  <button mat-icon-button color="accent" (click)="openDetailsDialog(order.order_id)">
                     <mat-icon>info</mat-icon>
                   </button>
                 </td>

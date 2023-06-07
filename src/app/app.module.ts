@@ -45,6 +45,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PagoComponent } from './pages/pago/pago.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { DialogDetallesComponent } from './pages/admin/dialog-detalles/dialog-detalles.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     AdminComponent,
     DialogProductoComponent,
     PagoComponent,
+    DialogDetallesComponent,
   ],
   imports: [
     BrowserModule,

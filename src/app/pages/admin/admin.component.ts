@@ -10,6 +10,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DetallesService } from 'src/app/shared/services/detalles.service';
+import { DialogDetallesComponent } from './dialog-detalles/dialog-detalles.component';
 
 @Component({
   selector: 'app-admin',
@@ -28,13 +29,7 @@ export class AdminComponent implements OnInit {
     'description',
     'action',
   ];
-  displayedColumns2: string[] = [
-    'id',
-    'date',
-    'address',
-    'state',
-    'action',
-  ];
+  displayedColumns2: string[] = ['id', 'date', 'address', 'state', 'action'];
   dataSource!: MatTableDataSource<any>;
   orderDataSource!: MatTableDataSource<any>;
 
@@ -71,6 +66,20 @@ export class AdminComponent implements OnInit {
 
   openEditProductDialog(data: any): void {
     const dialogRef = this.dialog.open(DialogProductoComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.getAllProducts();
+        }
+      },
+    });
+  }
+
+  openDetailsDialog(data: any): void {
+    const dialogRef = this.dialog.open(DialogDetallesComponent, {
       data,
     });
 

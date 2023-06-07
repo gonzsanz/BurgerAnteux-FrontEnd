@@ -50,7 +50,6 @@ export class AdminComponent implements OnInit {
     window.scrollTo(0, 0);
     this.getAllProducts();
     this.getAllOrders();
-    this.getDetailsByOrder(1);
   }
 
   openAddEditProductDialog(): void {
@@ -80,7 +79,7 @@ export class AdminComponent implements OnInit {
 
   openDetailsDialog(data: any): void {
     const dialogRef = this.dialog.open(DialogDetallesComponent, {
-      data,
+      data: { order_id: data.order_id }, // Pasar el valor order_id en los datos del diálogo
     });
 
     dialogRef.afterClosed().subscribe({
@@ -146,18 +145,6 @@ export class AdminComponent implements OnInit {
         this.orderDataSource = new MatTableDataSource(orders);
         this.orderDataSource.sort = this.sort;
         this.orderDataSource.paginator = this.paginator;
-      },
-      (error: Error) => {
-        console.log('Error: ', error);
-      }
-    );
-  }
-
-  public getDetailsByOrder(order_id: number): void {
-    this.detalleService.getDetailsByOrder(order_id).subscribe(
-      (details: any[]) => {
-        this.detailsList = details;
-        console.log(this.detailsList);
       },
       (error: Error) => {
         console.log('Error: ', error);

@@ -1,38 +1,38 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Detalle } from 'src/app/shared/interfaces/detalle';
-import { Pedido } from 'src/app/shared/interfaces/pedido';
-import { PedidoService } from 'src/app/shared/services/pedido.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DetallesService } from 'src/app/shared/services/detalles.service';
 
 @Component({
   selector: 'app-dialog-detalles',
   templateUrl: './dialog-detalles.component.html',
   styleUrls: ['./dialog-detalles.component.scss'],
 })
-export class DialogDetallesComponent {
-  pedidosConDetalles: any[] | undefined;
+export class DialogDetallesComponent implements OnInit {
+  listaDetalles: any[] | undefined;
+  order_id!: number;
 
   constructor(
-    private pedidoService: PedidoService,
-    public dialogRef: MatDialogRef<DialogDetallesComponent>
+    private detalleService: DetallesService,
+    private dialogRef: MatDialogRef<DialogDetallesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit() {
-    this.pedidoService.getPedidosConDetalles().subscribe((data) => {
-      this.pedidosConDetalles = data;
-      console.log(data);
+  ngOnInit(): void {
+    this.order_id = this.data.order_id;
+    this.getDetailsByOrder(this.order_id);
+    console.log(this.order_id);
+  }
+
+  getDetailsByOrder(order_id: number) {
+    this.detalleService.getDetailsByOrder(order_id).subscribe({
+      next: (result) => {
+        this.listaDetalles = result;
+        console.log(this.listaDetalles);
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
-  }
-
-  obtenerCantidadPorProducto(pedido: any, productoId: number): number {
-    const detalle = pedido.details.find(
-      (d: any) => d.fk_product_id === productoId
-    );
-    return detalle ? detalle.quantity : 0;
-  }
-
-  obtenerNombreProducto(detalle: any): string {
-    return detalle.product.name;
   }
 
   close(): void {

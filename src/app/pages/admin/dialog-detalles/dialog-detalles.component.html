@@ -7,18 +7,12 @@
   <p class="dialog-title">Resumen de tu pedido:</p>
 
   <mat-dialog-content>
-
-
-    <div *ngFor="let pedido of pedidosConDetalles">
-      <h3>Pedido ID: {{ pedido.order_id }}</h3>
+    <div *ngFor="let detalle of listaDetalles">
       <ul>
-        <li *ngFor="let detalle of pedido.details">
-          Cantidad: {{ detalle.quantity }}
-          Producto: {{ obtenerNombreProducto(detalle) }}
+        <li>
+          {{ detalle[0] }}x {{ detalle[1] }}
         </li>
       </ul>
     </div>
-    <button mat-button (click)="close()">Cerrar</button>
-
-
   </mat-dialog-content>
+</div>

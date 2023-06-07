@@ -18,6 +18,7 @@ export class DialogProductoComponent implements OnInit {
     'PERRITOS',
     'PLATOS COMBINADOS',
     'RACIONES',
+    'ENSALADAS',
     'POSTRES',
   ];
 

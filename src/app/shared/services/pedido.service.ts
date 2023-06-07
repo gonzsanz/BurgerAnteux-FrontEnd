@@ -21,4 +21,11 @@ export class PedidoService {
   public getPedidosConDetalles(): Observable<any[]> {
     return this.httpClient.get<any[]>(`http://localhost:8080/api/orders`);
   }
+
+  public updateOrder(order: any): Observable<any> {
+    return this.httpClient.put(
+      `http://localhost:8080/api/orders/update`,
+      order
+    );
+  }
 }

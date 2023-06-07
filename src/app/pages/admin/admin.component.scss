@@ -59,3 +59,20 @@ h2 {
   font-family: $fuente-anteux;
   font-weight: bold;
 }
+
+
+
+.ready-state {
+  background-color: green;
+  color: white;
+}
+
+select.delivered-state {
+  background-color: rgb(229, 187, 0);
+}
+select {
+  background-color: rgb(132, 2, 2);
+  color: white;
+  font-weight: bold;
+  border-style: hidden;
+}

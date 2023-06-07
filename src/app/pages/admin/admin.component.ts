@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
   productList: Product[] | undefined;
   orderList: Pedido[] | undefined;
   detailsList: any[] | undefined;
+  states: string[] = ['Pendiente', 'Preparando', 'Enviado', 'Entregado'];
 
   displayedColumns: string[] = [
     'name',
@@ -43,8 +44,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
   constructor(
     private productService: ProductService,
     private pedidoService: PedidoService,
-    private dialog: MatDialog,
-    private detalleService: DetallesService
+    private dialog: MatDialog
   ) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
@@ -166,6 +166,36 @@ export class AdminComponent implements OnInit, AfterViewInit {
         console.log('Error: ', error);
       }
     );
+  }
+
+  updateOrderState(event: any, order: Pedido): void {
+    const newState = event.target.value;
+
+    if (newState) {
+      order.state = newState;
+
+      this.pedidoService.updateOrder(order).subscribe(
+        (response: any) => {
+          console.log('Pedido actualizado: ', response);
+          // Aquí puedes realizar alguna acción adicional después de actualizar el estado del pedido
+        },
+        (error: Error) => {
+          console.log('Error al actualizar el pedido: ', error);
+        }
+      );
+    }
+  }
+
+  isSelected(order: Pedido): string {
+    if (order.state === 'READY') {
+      return 'ready-state';
+    } else if (order.state === 'DELIVERED') {
+      return 'delivered-state';
+    } else if (order.state === 'IN_PROCESS') {
+      return 'in-process-state';
+    } else {
+      return 'pending-state';
+    }
   }
 
   applyFilter(event: Event) {

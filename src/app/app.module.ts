@@ -36,6 +36,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { MatTableModule } from '@angular/material/table';
+import { PagoComponent } from './pages/pago/pago.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { MatTableModule } from '@angular/material/table';
     CarritoComponent,
     PerfilComponent,
     PedidoComponent,
+    PagoComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { MatTableModule } from '@angular/material/table';
     MatMenuModule,
     MatCheckboxModule,
     MatTableModule,
+    NgxPayPalModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

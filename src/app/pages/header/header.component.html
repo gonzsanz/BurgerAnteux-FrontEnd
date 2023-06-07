@@ -9,18 +9,13 @@
       </div>
       <div class="logo">
         <a [routerLink]="['/inicio']">
-          <div class="d-flex">
+          <div class="img-logo">
             <img src="assets/logoblanco.png" alt="Logo web" />
           </div>
         </a>
       </div>
       <div class="order-md-3">
         <div class="d-flex">
-          <!-- <a *ngIf="isSessionActive" [routerLink]="['/perfil']">
-            <button mat-icon-button class="person">
-              <mat-icon>account_circle</mat-icon>
-            </button>
-          </a> -->
           <div class="dropdown">
             <button *ngIf="isSessionActive" mat-icon-button class="person dropbtn">
               <mat-icon>account_circle</mat-icon>
@@ -63,9 +58,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">Sobre nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/reservas']" routerLinkActive="active">Reservas</a>
           </li>
         </ul>
       </div>

@@ -35,10 +35,17 @@
         <p class="title">Total: {{ getTotal() | number : "1.2" }}€</p>
       </div>
       <div class="pago">
-        <div class="boton-pago">
-          <button class="btn">Pagar</button>
+        <div class="boton-pago" *ngIf="getLogin(); else redirectToLogin" routerLink="/pago">
+          <button class="btn" (click)="close()">Pagar</button>
         </div>
+
+        <ng-template #redirectToLogin>
+          <div class="boton-pago" routerLink="/login">
+            <button class="btn" (click)="close()">Iniciar sesión</button>
+          </div>
+        </ng-template>
       </div>
+
     </mat-dialog-content>
   </div>
 </div>

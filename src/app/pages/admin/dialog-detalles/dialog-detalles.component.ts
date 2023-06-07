@@ -10,6 +10,7 @@ import { DetallesService } from 'src/app/shared/services/detalles.service';
 export class DialogDetallesComponent implements OnInit {
   listaDetalles: any[] | undefined;
   order_id!: number;
+  comment!: string;
 
   constructor(
     private detalleService: DetallesService,
@@ -19,7 +20,9 @@ export class DialogDetallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.order_id = this.data.order_id;
+    this.comment = this.data.comment;
     this.getDetailsByOrder(this.order_id);
+    console.log(this.comment);
     console.log(this.order_id);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -17,7 +17,7 @@ import { DialogDetallesComponent } from './dialog-detalles/dialog-detalles.compo
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, AfterViewInit {
   productList: Product[] | undefined;
   orderList: Pedido[] | undefined;
   detailsList: any[] | undefined;
@@ -52,6 +52,15 @@ export class AdminComponent implements OnInit {
     this.getAllOrders();
   }
 
+  ngAfterViewInit(): void {
+    this.orderDataSource.sort = this.sort;
+    this.sort.sort({
+      id: 'date',
+      start: 'asc',
+      disableClear: true,
+    });
+  }
+
   openAddEditProductDialog(): void {
     const dialogRef = this.dialog.open(DialogProductoComponent);
     dialogRef.afterClosed().subscribe({
@@ -79,7 +88,10 @@ export class AdminComponent implements OnInit {
 
   openDetailsDialog(data: any): void {
     const dialogRef = this.dialog.open(DialogDetallesComponent, {
-      data: { order_id: data.order_id }, // Pasar el valor order_id en los datos del diálogo
+      data: {
+        order_id: data.order_id,
+        comment: data.comments,
+      },
     });
 
     dialogRef.afterClosed().subscribe({
@@ -142,9 +154,13 @@ export class AdminComponent implements OnInit {
   public getAllOrders(): void {
     this.pedidoService.obtenerPedidos().subscribe(
       (orders: Pedido[]) => {
+        orders.sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+        this.orderList = orders;
         this.orderDataSource = new MatTableDataSource(orders);
-        this.orderDataSource.sort = this.sort;
         this.orderDataSource.paginator = this.paginator;
+        this.orderDataSource.sort = this.sort;
       },
       (error: Error) => {
         console.log('Error: ', error);

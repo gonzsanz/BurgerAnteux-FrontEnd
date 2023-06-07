@@ -1,16 +1,24 @@
 @import "../../../variables.scss";
 
-.content {
-  background-color: $color-negro;
+
+li {
+  list-style: none;
+
+  span {
+    font-weight: bold;
+    color: #000;
+  }
 }
 
-.dialog {
-  margin: 0;
-  padding: 0;
-}
+.observaciones {
+  .titulo {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
 
-h3,li {
-  color: $color-blanco;
+  .comentario {
+    margin-bottom: 1rem;
+  }
 }
 
 .close {
@@ -18,7 +26,7 @@ h3,li {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  color: $color-blanco;
+  color: $color-negro;
 }
 
 .dialog-title {
@@ -27,97 +35,10 @@ h3,li {
   justify-content: center;
   align-items: center;
   font-size: calc(1.5rem + 1vw);
-  color: $color-amarillo;
+  color: $color-negro;
+  font-weight: bold;
   font-family: $fuente-anteux;
   padding-bottom: 2rem;
   margin: 0;
-}
-
-.titulos {
-  padding-bottom: 1.5rem;
-
-  .title {
-    color: $color-blanco;
-    font-family: $fuente-anteux;
-    font-size: 1.5rem;
-  }
-}
-
-.container-products {
-  .products {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Heebo", sans-serif;
-
-    .product-qty {
-      display: flex;
-      flex-basis: 50%;
-      align-items: center;
-      color: $color-blanco;
-      margin-bottom: 0.8rem;
-
-      .qty {
-        color: $color-amarillo;
-      }
-    }
-
-    .price {
-      display: flex;
-      flex-basis: 30%;
-      align-items: center;
-      color: $color-blanco;
-      margin-bottom: 0.8rem;
-    }
-
-    .papelera {
-      display: flex;
-      flex-basis: 10%;
-      justify-content: flex-end;
-      color: $color-amarillo;
-      padding-bottom: 0.8rem;
-      margin-bottom: 0.8rem;
-      cursor: pointer;
-    }
-  }
-}
-
-.totales {
-  margin: 1rem 0 2rem 0;
-
-  .title {
-    color: $color-blanco;
-    font-family: $fuente-anteux;
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-  }
-}
-
-.pago {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  .boton-pago {
-    flex-grow: 1;
-  }
-
-  .btn {
-    padding: 0;
-    color: $color-negro;
-    background-color: $color-amarillo;
-    font-size: calc(0.8rem + 1vw);
-    font-family: $fuente-anteux;
-    margin: 1.5rem 0 1rem 0;
-    width: 100%;
-    border-radius: 10rem;
-  }
-
-  .btn:hover {
-    background-color: darken($color-amarillo, 10%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  }
+  padding: 0 4rem;
 }

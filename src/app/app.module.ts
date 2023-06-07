@@ -43,6 +43,8 @@ import { DialogProductoComponent } from './pages/admin/dialog-producto/dialog-pr
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PagoComponent } from './pages/pago/pago.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { MatSortModule } from '@angular/material/sort';
     PedidoComponent,
     AdminComponent,
     DialogProductoComponent,
+    PagoComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +93,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
+    NgxPayPalModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

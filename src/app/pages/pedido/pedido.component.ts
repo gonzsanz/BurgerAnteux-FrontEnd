@@ -35,6 +35,7 @@ export class PedidoComponent {
   ) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.obtenerPedidos();
   }
 

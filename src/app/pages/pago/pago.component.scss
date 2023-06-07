@@ -1,0 +1,73 @@
+@import "../../variables.scss";
+.pago-container {
+  height: 100%;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    h1 {
+      font-family: $fuente-anteux;
+      font-size: 3rem;
+      font-weight: bold;
+      color: $color-negro;
+      text-align: center;
+    }
+  }
+
+  .principal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 1rem 1rem 1rem;
+    .resumen {
+      flex-basis: 60%;
+      .entrega {
+        border: 2px solid #000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        h4 {
+          font-size: 1.5rem;
+          font-family: $fuente-anteux;
+        }
+      }
+      .direccion {
+        border: 2px solid #000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        h4 {
+          font-size: 1.5rem;
+          font-family: $fuente-anteux;
+        }
+      }
+      .metodos-pago {
+        border: 2px solid #000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        h4 {
+          font-size: 1.5rem;
+          font-family: $fuente-anteux;
+        }
+      }
+    }
+
+    .pago {
+      flex-basis: 38%;
+      .resumen {
+        border: 2px solid #000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        h4 {
+          font-size: 1.5rem;
+          font-family: $fuente-anteux;
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { timer } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { SuccesDialogComponent } from '../registro/succes-dialog/succes-dialog.component';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -56,9 +58,15 @@ export class LoginComponent implements OnInit {
 
           timer(2000).subscribe(() => {
             dialogRef.close();
-            this.router.navigateByUrl('/carta').then(() => {
-              window.location.reload();
-            });
+            if (this.cartService.getItems().length > 0) {
+              this.router.navigateByUrl('/pago').then(() => {
+                window.location.reload();
+              });
+            } else {
+              this.router.navigateByUrl('/carta').then(() => {
+                window.location.reload();
+              });
+            }
           });
         },
         (err) => {

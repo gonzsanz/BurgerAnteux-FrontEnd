@@ -9,6 +9,7 @@ import { DialogProductoComponent } from './dialog-producto/dialog-producto.compo
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { DetallesService } from 'src/app/shared/services/detalles.service';
 
 @Component({
   selector: 'app-admin',
@@ -18,6 +19,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 export class AdminComponent implements OnInit {
   productList: Product[] | undefined;
   orderList: Pedido[] | undefined;
+  detailsList: any[] | undefined;
 
   displayedColumns: string[] = [
     'name',
@@ -29,10 +31,9 @@ export class AdminComponent implements OnInit {
   displayedColumns2: string[] = [
     'id',
     'date',
-    'quantity',
     'address',
-    'comments',
     'state',
+    'action',
   ];
   dataSource!: MatTableDataSource<any>;
   orderDataSource!: MatTableDataSource<any>;
@@ -47,12 +48,14 @@ export class AdminComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private pedidoService: PedidoService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private detalleService: DetallesService
   ) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.getAllProducts();
     this.getAllOrders();
+    this.getDetailsByOrder(1);
   }
 
   openAddEditProductDialog(): void {
@@ -134,6 +137,18 @@ export class AdminComponent implements OnInit {
         this.orderDataSource = new MatTableDataSource(orders);
         this.orderDataSource.sort = this.sort;
         this.orderDataSource.paginator = this.paginator;
+      },
+      (error: Error) => {
+        console.log('Error: ', error);
+      }
+    );
+  }
+
+  public getDetailsByOrder(order_id: number): void {
+    this.detalleService.getDetailsByOrder(order_id).subscribe(
+      (details: any[]) => {
+        this.detailsList = details;
+        console.log(this.detailsList);
       },
       (error: Error) => {
         console.log('Error: ', error);

@@ -37,6 +37,7 @@ export class HeaderComponent {
       }
     });
     this.isMenuExpanded = false;
+    this.checkIsAdmin();
   }
 
   collapseMenu() {
@@ -45,7 +46,9 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.isMenuExpanded = !this.isMenuExpanded;
+  }
 
+  checkIsAdmin(): void {
     // comprueba si el usuario es admin
     this.userService
       .getUser(sessionStorage.getItem('email')!)

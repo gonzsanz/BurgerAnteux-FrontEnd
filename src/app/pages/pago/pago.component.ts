@@ -11,6 +11,7 @@ import { ProductComponent } from '../product/product/product.component';
   styleUrls: ['./pago.component.scss'],
 })
 export class PagoComponent {
+  cart = this.cartService.getItems();
   entregaADomicilio: boolean = false;
   direccion: string;
   direccionEditable: string;
@@ -19,6 +20,7 @@ export class PagoComponent {
   servicioDomicilio: number = 1.5;
   public payPalConfig?: IPayPalConfig;
   total = '';
+  comentarios: string = '';
 
   constructor(
     private userService: UserService,
@@ -30,8 +32,6 @@ export class PagoComponent {
   }
 
   ngOnInit(): void {
-    this.initConfig();
-
     const user = sessionStorage.getItem('email');
     if (!user) {
       return;
@@ -45,10 +45,14 @@ export class PagoComponent {
         console.log('Error al obtener la dirección del usuario:', error);
       }
     );
+    this.cart = this.cartService.getItems();
+    this.getComentarios();
+    this.initConfig();
   }
 
   private initConfig(): void {
     this.total = this.getTotal().toFixed(2).toString();
+
     this.payPalConfig = {
       currency: 'EUR',
       clientId: environment.clientId,
@@ -63,7 +67,13 @@ export class PagoComponent {
                 breakdown: {
                   item_total: {
                     currency_code: 'EUR',
-                    value: this.total,
+                    value: this.getTotalCart().toFixed(2).toString(),
+                  },
+                  shipping: {
+                    currency_code: 'EUR',
+                    value: this.entregaADomicilio
+                      ? this.servicioDomicilio.toFixed(2).toString()
+                      : '0.00',
                   },
                 },
               },
@@ -114,6 +124,7 @@ export class PagoComponent {
     if (!this.entregaADomicilio) {
       this.mostrarInputDireccion = false;
     }
+    this.updatePayPalConfig();
   }
 
   onModificarDireccion(): void {
@@ -156,5 +167,45 @@ export class PagoComponent {
     });
 
     return items;
+  }
+
+  getComentarios(): string {
+    console.log(this.comentarios);
+    return this.comentarios;
+  }
+
+  updatePayPalConfig(): void {
+    if (this.payPalConfig) {
+      this.total = this.getTotal().toFixed(2).toString();
+      this.payPalConfig.createOrderOnClient = (data) =>
+        <ICreateOrderRequest>{
+          intent: 'CAPTURE',
+          purchase_units: [
+            {
+              amount: {
+                currency_code: 'EUR',
+                value: this.total,
+                breakdown: {
+                  item_total: {
+                    currency_code: 'EUR',
+                    value: this.getTotalCart().toFixed(2).toString(),
+                  },
+                  shipping: {
+                    currency_code: 'EUR',
+                    value: this.entregaADomicilio
+                      ? this.servicioDomicilio.toFixed(2).toString()
+                      : '0.00',
+                  },
+                },
+              },
+              items: this.getItemList(),
+            },
+          ],
+        };
+    }
+  }
+
+  getQuantity(productId: number): number {
+    return this.cartService.getQuantity(productId);
   }
 }

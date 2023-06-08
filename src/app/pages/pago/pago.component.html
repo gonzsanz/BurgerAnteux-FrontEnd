@@ -41,6 +41,17 @@
                 </ng-container>
             </div>
         </div>
+        <div class="comentarios">
+            <h4>Comentarios del pedido</h4>
+            <p>Observaciones</p>
+            <div class="botones-comentarios">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Comentarios</mat-label>
+                    <textarea matInput type="text" id="input-comentarios" [(ngModel)]="comentarios"
+                        placeholder="Ej: Sin cebolla..."></textarea>
+                </mat-form-field>
+            </div>
+        </div>
         <div class="metodos-pago">
             <h4>Métodos de pago</h4>
             <div class="botones-pago">
@@ -64,31 +75,45 @@
         <div class="resumen">
             <h4>Resumen</h4>
             <div class="coste">
-                <p>Coste total de los articulos: </p>
-                <p>{{ getTotalCart() | number : "1.2" }}€</p>
-            </div>
-            <div class="domicilio" *ngIf="entregaADomicilio">
-                <p>Servicio a domicilio:</p>
-                <p>{{servicioDomicilio | number : "1.2"}}€</p>
-            </div>
-            <hr>
-            <div class="total">
-                <p><b>Total:</b></p>
-                <p><b>{{ getTotal() | number : "1.2" }}€</b></p>
-            </div>
-            <div class="iva">
-                <p>IVA incluido</p>
-            </div>
-            <div class="finalizar">
-                <div class="boton-finalizar">
-                    <button *ngIf="metodoPago !== 'paypal'" class="btn">Finalizar pedido</button>
-                    <ngx-paypal *ngIf="metodoPago === 'paypal'" [config]="payPalConfig"></ngx-paypal>
+                <div class="container-products">
+                    <div class="carrito" *ngFor="let item of cart">
+                        <div class="product-qty">
+                            <div class="qty">
+                                <p>{{ getQuantity(item.product_id) }}x &nbsp;</p>
+                            </div>
+                            <div class="product">
+                                <p>{{ item.name }}</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <p>
+                                {{ item.price * getQuantity(item.product_id) | number : "1.2" }}€
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="terminos">
-                <p>Al hacer clic en 'Finalizar pedido', confirmo que he leído y acepto todos los <b>términos y
-                        políticas</b>, así como la <b>información para consumidores en la UE.</b></p>
+                <div class="domicilio" *ngIf="entregaADomicilio">
+                    <p>Servicio a domicilio:</p>
+                    <p>{{servicioDomicilio | number : "1.2"}}€</p>
+                </div>
+                <hr>
+                <div class="total">
+                    <p><b>Total:</b></p>
+                    <p><b>{{ getTotal() | number : "1.2" }}€</b></p>
+                </div>
+                <div class="iva">
+                    <p>IVA incluido</p>
+                </div>
+                <div class="finalizar">
+                    <div class="boton-finalizar">
+                        <button *ngIf="metodoPago !== 'paypal'" class="btn">Finalizar pedido</button>
+                        <ngx-paypal *ngIf="metodoPago === 'paypal'" [config]="payPalConfig"></ngx-paypal>
+                    </div>
+                </div>
+                <div class="terminos">
+                    <p>Al hacer clic en 'Finalizar pedido', confirmo que he leído y acepto todos los <b>términos y
+                            políticas</b>, así como la <b>información para consumidores en la UE.</b></p>
+                </div>
             </div>
         </div>
     </div>
-</div>

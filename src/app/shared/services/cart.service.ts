@@ -86,4 +86,10 @@ export class CartService {
       0
     );
   }
+
+  clearCart(): void {
+    this.items = [];
+    this.cartItemCount = 0;
+    this.saveCart();
+  }
 }

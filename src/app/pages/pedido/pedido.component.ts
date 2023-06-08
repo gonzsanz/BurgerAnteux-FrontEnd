@@ -6,6 +6,11 @@ import { es } from 'date-fns/locale';
 import { UserService } from 'src/app/shared/services/user.service';
 import { DetallesService } from 'src/app/shared/services/detalles.service';
 
+interface Detalle {
+  cantidad: number;
+  producto: string;
+}
+
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.component.html',
@@ -14,8 +19,10 @@ import { DetallesService } from 'src/app/shared/services/detalles.service';
 export class PedidoComponent implements OnInit {
   user_id!: number;
   order_id!: number;
-  pedidos = [];
-  details = {};
+  user_orders: any[] = [];
+  pedidos: Pedido[] = [];
+  detalles!: any[] | undefined;
+  listaDetalles: Detalle[] | undefined;
 
   constructor(
     private userService: UserService,
@@ -39,19 +46,8 @@ export class PedidoComponent implements OnInit {
 
   getOrders() {
     this.pedidoService.getOrderByUser(this.user_id).subscribe((orders) => {
-      this.pedidos = orders;
-      for (let order of orders) {
-        this.order_id = order.order_id;
-        console.log(this.order_id);
-        this.detallesService
-          .getOrderDetailsByUser(this.order_id, this.user_id)
-          .subscribe((details) => {
-            this.details = details;
-          });
-        console.log(this.details);
-      }
-
-      // console.log(this.pedidos);
+      this.user_orders = orders;
+      console.log(this.user_orders);
     });
   }
 }

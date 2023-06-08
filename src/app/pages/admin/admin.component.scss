@@ -1,5 +1,36 @@
 @import '../../../app/variables.scss';
 
+mat-sidenav-content {
+  padding-bottom: 3rem;
+}
+
+mat-sidenav {
+  height: auto;
+  width: calc(20rem);
+
+}
+
+.salir {
+  position: absolute;
+  top: 1;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  color: red;
+}
+
+a {
+  margin-bottom: 1rem;
+  color: $color-amarillo;
+  font-family: $fuente-anteux;
+  font-size: calc(1rem + .6vh);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
 mat-toolbar-row {
   display: flex;
   align-items: center;
@@ -70,6 +101,7 @@ h2 {
 select.delivered-state {
   background-color: rgb(229, 187, 0);
 }
+
 select {
   background-color: rgb(132, 2, 2);
   color: white;

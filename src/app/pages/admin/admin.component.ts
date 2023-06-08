@@ -11,6 +11,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DetallesService } from 'src/app/shared/services/detalles.service';
 import { DialogDetallesComponent } from './dialog-detalles/dialog-detalles.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -44,7 +45,8 @@ export class AdminComponent implements OnInit, AfterViewInit {
   constructor(
     private productService: ProductService,
     private pedidoService: PedidoService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
@@ -61,6 +63,15 @@ export class AdminComponent implements OnInit, AfterViewInit {
     });
   }
 
+  closeSidenav(): void {
+    this.sidenav.close();
+  }
+  cerrarSesion() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('/').then(() => {
+      window.location.reload();
+    });
+  }
   openAddEditProductDialog(): void {
     const dialogRef = this.dialog.open(DialogProductoComponent);
     dialogRef.afterClosed().subscribe({

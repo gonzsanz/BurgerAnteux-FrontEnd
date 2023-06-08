@@ -14,6 +14,8 @@ export class CartaComponent implements OnInit {
     'TODOS',
     'ESPECIALIDADES',
     'HAMBURGUESAS',
+    'SANWICHES',
+    'ENSALADAS',
     'BOCADILLOS',
     'PERRITOS',
     'PLATOS COMBINADOS',

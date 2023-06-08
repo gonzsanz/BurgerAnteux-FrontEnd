@@ -1,16 +1,22 @@
 @import "./variables.scss";
 
+.content {
+  font-family: "Heebo", sans-serif;
+}
+
 .wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   .content {
     flex: 1;
+    background-color: rgb(241, 241, 241);
   }
 }
 
 #scroll-to-top {
   position: fixed;
+  z-index: 1000;
   bottom: 1rem;
   right: 1rem;
   display: none;

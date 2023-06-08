@@ -2,7 +2,7 @@
   <div class="container-fluid shadow-sm p-3">
     <nav class="navbar navbar-expand-md">
       <div>
-        <button class="menu navbar-toggler d-md-none" type="button" data-bs-toggle="collapse"
+        <button class="menu navbar-toggler d-md-none" type="button" (click)="toggleMenu()" data-bs-toggle="collapse"
           data-bs-target="#collapsibleNavbar" aria-label="Toggle navigation">
           <mat-icon>menu</mat-icon>
         </button>
@@ -48,18 +48,20 @@
           </ng-template>
         </div>
       </div>
-      <div class="navbar-collapse collapse order-md-2" id="collapsibleNavbar">
+      <div class="navbar-collapse collapse order-md-2" [ngClass]="{'show': isMenuExpanded}" id="collapsibleNavbar">
         <ul class="navbar-nav mx-auto mt-2">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/inicio']" routerLinkActive="active">Home</a>
+            <a class="nav-link" [routerLink]="['/inicio']" (click)="collapseMenu()" routerLinkActive="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/carta']" routerLinkActive="active">Carta</a>
+            <a class="nav-link" [routerLink]="['/carta']" (click)="collapseMenu()" routerLinkActive="active">Carta</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">Sobre nosotros</a>
+            <a class="nav-link" [routerLink]="['/about']" (click)="collapseMenu()" routerLinkActive="active">Sobre
+              nosotros</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin']" (click)="collapseMenu()" routerLinkActive="active">Admin</a>
             <a *ngIf="isAdmin" class="nav-link" [routerLink]="['/admin']" routerLinkActive="active">Admin</a>
           </li>
         </ul>

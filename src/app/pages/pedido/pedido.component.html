@@ -4,9 +4,8 @@
     <mat-list role="list" class="pedido">
       <mat-list-item class="date">
         <span>{{ order.date | date:"dd / MM / YYYY" }}</span>
-        <span class="spacer"></span>
-        <span>Estado: {{ order.state }}</span>
       </mat-list-item>
+
       <div class="detalles">
         <div *ngFor="let detail of order.details" class="detalles">
           <mat-list-item class="item">
@@ -15,6 +14,9 @@
           </mat-list-item>
         </div>
       </div>
+      <mat-list-item class="date">
+        <span class="state"> Estado:</span><span [ngStyle]="{'color': getColorForState(order.state)}"> {{ order.state }}</span>
+      </mat-list-item>
     </mat-list>
     <div class="repetirPedido">
       <button mat-raised-button color="primary">Repetir pedido</button>

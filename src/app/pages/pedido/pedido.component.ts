@@ -50,4 +50,16 @@ export class PedidoComponent implements OnInit {
       console.log(this.user_orders);
     });
   }
+
+  getColorForState(state: string): string {
+    if (state === 'DELIVERED') {
+      return 'orange'; // Cambia el color según tus necesidades
+    } else if (state === 'READY') {
+      return 'green'; // Cambia el color según tus necesidades
+    } else if (state === 'IN_PROCESS') {
+      return 'red'; // Cambia el color según tus necesidades
+    } else {
+      return 'black'; // Color predeterminado si el estado no coincide con ninguno de los anteriores
+    }
+  }
 }

@@ -1,11 +1,16 @@
 @import "./variables.scss";
 
+.content {
+  font-family: "Heebo", sans-serif;
+}
+
 .wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   .content {
     flex: 1;
+    background-color: rgb(241, 241, 241);
   }
 }
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -45,6 +45,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PagoComponent } from './pages/pago/pago.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { MatRadioModule } from '@angular/material/radio';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -94,9 +97,13 @@ import { NgxPayPalModule } from 'ngx-paypal';
     MatPaginatorModule,
     MatSortModule,
     NgxPayPalModule,
+    MatRadioModule,
+    NgbModule,
+    NgxSpinnerModule,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

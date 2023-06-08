@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CarritoComponent } from '../carrito/carrito.component';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +17,14 @@ export class HeaderComponent {
   badgeCount: number = 0;
   CarritoComponent: any;
   isMenuExpanded: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private cartService: CartService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +45,15 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.isMenuExpanded = !this.isMenuExpanded;
+
+    // comprueba si el usuario es admin
+    this.userService
+      .getUser(sessionStorage.getItem('email')!)
+      .subscribe((res) => {
+        if (res.role === 'admin') {
+          this.isAdmin = true;
+        }
+      });
   }
 
   cerrarSesion() {

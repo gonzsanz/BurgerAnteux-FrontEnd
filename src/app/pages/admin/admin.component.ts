@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -10,16 +10,19 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DetallesService } from 'src/app/shared/services/detalles.service';
+import { DialogDetallesComponent } from './dialog-detalles/dialog-detalles.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, AfterViewInit {
   productList: Product[] | undefined;
   orderList: Pedido[] | undefined;
   detailsList: any[] | undefined;
+  states: string[] = ['Pendiente', 'Preparando', 'Enviado', 'Entregado'];
 
   displayedColumns: string[] = [
     'name',
@@ -28,13 +31,7 @@ export class AdminComponent implements OnInit {
     'description',
     'action',
   ];
-  displayedColumns2: string[] = [
-    'id',
-    'date',
-    'address',
-    'state',
-    'action',
-  ];
+  displayedColumns2: string[] = ['id', 'date', 'address', 'state', 'action'];
   dataSource!: MatTableDataSource<any>;
   orderDataSource!: MatTableDataSource<any>;
 
@@ -49,15 +46,32 @@ export class AdminComponent implements OnInit {
     private productService: ProductService,
     private pedidoService: PedidoService,
     private dialog: MatDialog,
-    private detalleService: DetallesService
+    private router: Router
   ) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.getAllProducts();
     this.getAllOrders();
-    this.getDetailsByOrder(1);
   }
 
+  ngAfterViewInit(): void {
+    this.orderDataSource.sort = this.sort;
+    this.sort.sort({
+      id: 'date',
+      start: 'asc',
+      disableClear: true,
+    });
+  }
+
+  closeSidenav(): void {
+    this.sidenav.close();
+  }
+  cerrarSesion() {
+    sessionStorage.clear();
+    this.router.navigateByUrl('/').then(() => {
+      window.location.reload();
+    });
+  }
   openAddEditProductDialog(): void {
     const dialogRef = this.dialog.open(DialogProductoComponent);
     dialogRef.afterClosed().subscribe({
@@ -72,6 +86,23 @@ export class AdminComponent implements OnInit {
   openEditProductDialog(data: any): void {
     const dialogRef = this.dialog.open(DialogProductoComponent, {
       data,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.getAllProducts();
+        }
+      },
+    });
+  }
+
+  openDetailsDialog(data: any): void {
+    const dialogRef = this.dialog.open(DialogDetallesComponent, {
+      data: {
+        order_id: data.order_id,
+        comment: data.comments,
+      },
     });
 
     dialogRef.afterClosed().subscribe({
@@ -134,9 +165,13 @@ export class AdminComponent implements OnInit {
   public getAllOrders(): void {
     this.pedidoService.obtenerPedidos().subscribe(
       (orders: Pedido[]) => {
+        orders.sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+        this.orderList = orders;
         this.orderDataSource = new MatTableDataSource(orders);
-        this.orderDataSource.sort = this.sort;
         this.orderDataSource.paginator = this.paginator;
+        this.orderDataSource.sort = this.sort;
       },
       (error: Error) => {
         console.log('Error: ', error);
@@ -144,16 +179,34 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  public getDetailsByOrder(order_id: number): void {
-    this.detalleService.getDetailsByOrder(order_id).subscribe(
-      (details: any[]) => {
-        this.detailsList = details;
-        console.log(this.detailsList);
-      },
-      (error: Error) => {
-        console.log('Error: ', error);
-      }
-    );
+  updateOrderState(event: any, order: Pedido): void {
+    const newState = event.target.value;
+
+    if (newState) {
+      order.state = newState;
+
+      this.pedidoService.updateOrder(order).subscribe(
+        (response: any) => {
+          console.log('Pedido actualizado: ', response);
+          // Aquí puedes realizar alguna acción adicional después de actualizar el estado del pedido
+        },
+        (error: Error) => {
+          console.log('Error al actualizar el pedido: ', error);
+        }
+      );
+    }
+  }
+
+  isSelected(order: Pedido): string {
+    if (order.state === 'READY') {
+      return 'ready-state';
+    } else if (order.state === 'DELIVERED') {
+      return 'delivered-state';
+    } else if (order.state === 'IN_PROCESS') {
+      return 'in-process-state';
+    } else {
+      return 'pending-state';
+    }
   }
 
   applyFilter(event: Event) {

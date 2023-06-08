@@ -48,6 +48,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DialogDetallesComponent } from './pages/admin/dialog-detalles/dialog-detalles.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AdminComponent,
     DialogProductoComponent,
     PagoComponent,
+    DialogDetallesComponent,
   ],
   imports: [
     BrowserModule,

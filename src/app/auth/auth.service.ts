@@ -8,7 +8,7 @@ import { Observable, map, of } from 'rxjs';
 export class AuthService {
   api: string = 'http://localhost:8080/api/users';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   login(email: string, password: string) {
     return this.httpClient

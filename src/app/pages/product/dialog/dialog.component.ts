@@ -11,6 +11,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 export class DialogComponent {
   public quantity: number;
   public total: number;
+
   constructor(
     private cartService: CartService,
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -26,17 +27,18 @@ export class DialogComponent {
   }
 
   public addToCart(): void {
-    this.cartService.addItemToCart();
+    this.cartService.addToCart(this.product, this.quantity); // Agregar la cantidad seleccionada
     this.dialogRef.close();
   }
 
   public remove(): void {
-    if (this.quantity > 1) this.quantity--;
-    this.total = this.product.price * this.quantity;
+    if (this.quantity > 1) {
+      this.quantity--;
+      this.total = this.product.price * this.quantity;
+    }
   }
 
   public cancel(): void {
     this.dialogRef.close();
   }
-
 }

@@ -1,0 +1,22 @@
+<div class="content">
+  <div class="close">
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <p class="dialog-title">Detalles del pedido:</p>
+
+  <mat-dialog-content>
+    <div *ngFor="let detalle of listaDetalles">
+      <ul>
+        <li>
+          <span>{{ detalle[0] }}x</span> {{ detalle[1] }}
+        </li>
+      </ul>
+    </div>
+    <div class="observaciones">
+      <p class="titulo">Observaciones:</p>
+      <p class="comentario">{{ comment }}</p>
+    </div>
+  </mat-dialog-content>
+</div>

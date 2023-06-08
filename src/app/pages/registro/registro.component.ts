@@ -72,6 +72,7 @@ export class RegistroComponent implements OnInit {
         email: this.registerForm.get('email')?.value,
         phone: this.registerForm.get('phone')?.value,
         address: this.registerForm.get('address')?.value,
+        role: 'user',
       };
 
       this.userService.createUser(userData).subscribe(

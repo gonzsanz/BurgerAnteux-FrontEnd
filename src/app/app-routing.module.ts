@@ -9,17 +9,24 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { PagoComponent } from './pages/pago/pago.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: HomeComponent },
   { path: 'carta', component: CartaComponent },
   { path: 'about', component: AboutComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'register', component: RegistroComponent, pathMatch: 'full' },
   { path: 'perfil', component: PerfilComponent, pathMatch: 'full' },
   { path: 'mispedidos', component: PedidoComponent, pathMatch: 'full' },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    pathMatch: 'full',
+  },
+  { path: 'pago', component: PagoComponent, pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

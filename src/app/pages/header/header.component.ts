@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CarritoComponent } from '../carrito/carrito.component';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +15,15 @@ export class HeaderComponent {
   isSessionActive: boolean | undefined;
   isCartaPage: boolean = false;
   badgeCount: number = 0;
+  CarritoComponent: any;
+  isAdmin: boolean = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +35,15 @@ export class HeaderComponent {
         this.isCartaPage = event.url.includes('/carta');
       }
     });
+
+    // comprueba si el usuario es admin
+    this.userService
+      .getUser(sessionStorage.getItem('email')!)
+      .subscribe((res) => {
+        if (res.role === 'admin') {
+          this.isAdmin = true;
+        }
+      });
   }
 
   cerrarSesion() {
@@ -41,4 +57,13 @@ export class HeaderComponent {
     return this.cartService.cartItemCount;
   }
 
+  openCart(): void {
+    if (this.isCartaPage) {
+      const dialogRef = this.dialog.open(CarritoComponent, {
+        width: '800px',
+        height: 'auto',
+        data: CarritoComponent,
+      });
+    }
+  }
 }

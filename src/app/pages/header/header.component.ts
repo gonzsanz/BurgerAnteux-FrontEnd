@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -15,6 +15,7 @@ export class HeaderComponent {
   isCartaPage: boolean = false;
   badgeCount: number = 0;
   CarritoComponent: any;
+  isMenuExpanded: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -32,6 +33,15 @@ export class HeaderComponent {
         this.isCartaPage = event.url.includes('/carta');
       }
     });
+    this.isMenuExpanded = false;
+  }
+
+  collapseMenu() {
+    this.isMenuExpanded = false;
+  }
+
+  toggleMenu() {
+    this.isMenuExpanded = !this.isMenuExpanded;
   }
 
   cerrarSesion() {
@@ -45,7 +55,7 @@ export class HeaderComponent {
     return this.cartService.cartItemCount;
   }
 
-  openCart() : void {
+  openCart(): void {
     if (this.isCartaPage) {
       const dialogRef = this.dialog.open(CarritoComponent, {
         width: '800px',
@@ -54,5 +64,4 @@ export class HeaderComponent {
       });
     }
   }
-
 }

@@ -46,8 +46,8 @@ export class PedidoComponent implements OnInit {
 
   getOrders() {
     this.pedidoService.getOrderByUser(this.user_id).subscribe((orders) => {
-      this.user_orders = orders;
-      console.log(this.user_orders);
+      this.user_orders = orders.slice(0, 5);
+      console.log(orders);
     });
   }
 

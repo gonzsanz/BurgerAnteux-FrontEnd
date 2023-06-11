@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    window.scroll(0, 0);
+    window.scrollTo(0, 0);
 
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),

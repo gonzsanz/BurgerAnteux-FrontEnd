@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { DetallesService } from 'src/app/shared/services/detalles.service';
 import { PedidoService } from 'src/app/shared/services/pedido.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { environment } from 'src/environment/environment';
@@ -35,8 +34,7 @@ export class PagoComponent {
     private cartService: CartService,
     private pedidoService: PedidoService,
     private router: Router,
-    private dialog: MatDialog,
-    private spinner: NgxSpinnerService
+    private dialog: MatDialog
   ) {
     this.direccion = '';
     this.direccionEditable = '';

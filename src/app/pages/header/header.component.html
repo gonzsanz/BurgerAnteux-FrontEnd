@@ -17,7 +17,7 @@
       <div class="order-md-3">
         <div class="d-flex">
           <div class="dropdown">
-            <button *ngIf="isSessionActive" mat-icon-button class="person dropbtn">
+            <button *ngIf="isSessionActive" mat-icon-button class="person dropbtn" aria-label="perfil">
               <mat-icon>account_circle</mat-icon>
             </button>
             <div class="dropdown-content">
@@ -31,11 +31,12 @@
             </div>
           </div>
           <a *ngIf="!isSessionActive" [routerLink]="['/login']">
-            <button mat-icon-button class="person">
+            <button mat-icon-button class="person" aria-label="login">
               <mat-icon>person</mat-icon>
             </button>
           </a>
-          <button mat-icon-button class="carrito" (click)="openCart()" *ngIf="isCartaPage; else redirectToCart">
+          <button mat-icon-button class="carrito" aria-label="carrito" (click)="openCart()"
+            *ngIf="isCartaPage; else redirectToCart">
             <div [matBadge]="cartItemsCount" matBadgeSize="small" matBadgeColor="primary" class="carrito-extra">
               <mat-icon>shopping_cart</mat-icon>
             </div>

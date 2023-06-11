@@ -10,12 +10,13 @@
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url("../../../assets/bocata.jpg");
+    url("../../../assets/aldeano.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-width: 100%;
+  min-height: 100vh;
 
   h2 {
     font-size: calc(1.5rem + 1vw);

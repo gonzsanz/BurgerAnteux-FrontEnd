@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { PedidoService } from 'src/app/shared/services/pedido.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { environment } from 'src/environment/environment';
-import { ProductComponent } from '../product/product/product.component';
+import { SuccesDialogComponent } from '../registro/succes-dialog/succes-dialog.component';
+import { timer } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pago',
@@ -21,10 +26,15 @@ export class PagoComponent {
   public payPalConfig?: IPayPalConfig;
   total = '';
   comentarios: string = '';
+  userId: number = 0;
+  load: boolean = false;
 
   constructor(
     private userService: UserService,
-    private cartService: CartService
+    private cartService: CartService,
+    private pedidoService: PedidoService,
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.direccion = '';
     this.direccionEditable = '';
@@ -32,6 +42,7 @@ export class PagoComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     const user = sessionStorage.getItem('email');
     if (!user) {
       return;
@@ -89,6 +100,7 @@ export class PagoComponent {
         layout: 'vertical',
       },
       onApprove: (data, actions) => {
+        window.scrollTo(0, 0);
         console.log(
           'onApprove - transaction was approved, but not authorized',
           data,
@@ -106,6 +118,11 @@ export class PagoComponent {
           'onClientAuthorization - you should probably inform your server about completed transaction at this point',
           data
         );
+        console.log('data:', data);
+        this.load = true;
+        setTimeout(() => {
+          this.finalizarPedido();
+        }, 2000);
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
@@ -170,8 +187,11 @@ export class PagoComponent {
   }
 
   getComentarios(): string {
-    console.log(this.comentarios);
     return this.comentarios;
+  }
+
+  getQuantity(productId: number): number {
+    return this.cartService.getQuantity(productId);
   }
 
   updatePayPalConfig(): void {
@@ -205,7 +225,48 @@ export class PagoComponent {
     }
   }
 
-  getQuantity(productId: number): number {
-    return this.cartService.getQuantity(productId);
+  finalizarPedido(): void {
+    console.log('finalizarPedido() called');
+    const email = sessionStorage.getItem('email');
+    this.userService.getUser(email!).subscribe(
+      (response) => {
+        console.log('Usuario obtenido', response);
+        const user = response;
+
+        const orderData = {
+          user: user,
+          address: this.direccion,
+          comments: this.comentarios,
+          date: new Date(),
+          state: 'IN_PROCESS',
+          details: this.cartService.getItems().map((item) => ({
+            product: item,
+            quantity: this.getQuantity(item.product_id),
+          })),
+        };
+
+        this.pedidoService.addOrder(orderData).subscribe(
+          (response) => {
+            console.log('Pedido agregado', response);
+            const dialogRef = this.dialog.open(SuccesDialogComponent, {
+              disableClose: true,
+              data: { message: 'Pedido realizado correctamente' },
+            });
+            this.load = false;
+            timer(2000).subscribe(() => {
+              this.cartService.clearCart();
+              dialogRef.close();
+              this.router.navigate(['/carta']);
+            });
+          },
+          (error) => {
+            console.log('Error al agregar pedido', error);
+          }
+        );
+      },
+      (error) => {
+        console.log('Error al obtener usuario', error);
+      }
+    );
   }
 }

@@ -1,15 +1,20 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .ultimoPedido {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/bocata.jpg');
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../../../assets/bocata.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  // height: 100vh;
+  background-attachment: fixed;
   min-width: 100%;
 
   h2 {
@@ -29,15 +34,12 @@
   }
 
   mat-list-item {
-
     span {
       color: $color-blanco;
-
     }
   }
 
   .pedido {
-
     margin-bottom: 1rem;
 
     .date {
@@ -54,10 +56,8 @@
         margin: auto;
         height: auto;
         color: $color-amarillo;
-
       }
     }
-
 
     .detalles {
       background-color: rgba(116, 116, 116, 0.4);

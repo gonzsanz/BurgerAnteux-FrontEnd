@@ -62,7 +62,7 @@
                     <mat-radio-button value="bizum"> Bizum</mat-radio-button> <i class="fa-solid fa-mobile"
                         style="color: #1ab766;"></i>
                     <hr>
-                    <mat-radio-button value="tarjeta"> Tarjeta </mat-radio-button><i class="fa-regular fa-credit-card"
+                    <mat-radio-button value="tarjeta"> Datáfono </mat-radio-button><i class="fa-regular fa-credit-card"
                         style="color: #000000;"></i>
                     <hr>
                     <mat-radio-button value="paypal"> Paypal </mat-radio-button><i class="fa-brands fa-paypal"
@@ -106,7 +106,12 @@
                 </div>
                 <div class="finalizar">
                     <div class="boton-finalizar">
-                        <button *ngIf="metodoPago !== 'paypal'" class="btn">Finalizar pedido</button>
+                        <div class="spinner" *ngIf="load">
+                            <img src="./../../../assets/burger.gif" alt="Spinner Hamburguesa">
+                            <h3>Verificando el pago...</h3>
+                        </div>
+                        <button *ngIf="metodoPago !== 'paypal'" class="btn" (click)="finalizarPedido()">Finalizar
+                            pedido</button>
                         <ngx-paypal *ngIf="metodoPago === 'paypal'" [config]="payPalConfig"></ngx-paypal>
                     </div>
                 </div>

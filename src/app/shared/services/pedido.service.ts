@@ -28,4 +28,8 @@ export class PedidoService {
       order
     );
   }
+
+  public addOrder(order: any): Observable<any> {
+    return this.httpClient.post(`http://localhost:8080/api/orders/add`, order);
+  }
 }

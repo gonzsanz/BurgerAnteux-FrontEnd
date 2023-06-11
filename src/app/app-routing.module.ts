@@ -11,6 +11,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { PagoComponent } from './pages/pago/pago.component';
+import { RoleGuard } from './pages/guard/role.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     pathMatch: 'full',
+    canActivate: [RoleGuard],
   },
   { path: 'pago', component: PagoComponent, pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },

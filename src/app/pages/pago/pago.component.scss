@@ -187,6 +187,33 @@ h4 {
               transition: ease-in-out 0.1s;
             }
           }
+          .spinner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(
+              0,
+              0,
+              0,
+              0.6
+            ); /* Fondo más oscuro con 0.6 de opacidad */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 15%;
+              height: auto;
+            }
+            h3 {
+              font-family: $fuente-anteux;
+              color: $color-blanco;
+              font-size: 2.5rem;
+              margin-top: 4.5rem;
+            }
+          }
         }
         .terminos {
           display: flex;

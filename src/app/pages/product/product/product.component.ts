@@ -11,7 +11,6 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class ProductComponent implements OnInit {
   @Input()
   public product: Product;
-
   ngOnInit(): void {}
 
   constructor(private dialog: MatDialog) {

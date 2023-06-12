@@ -1,0 +1,72 @@
+<header class="sticky-top">
+  <div class="container-fluid shadow-sm p-3">
+    <nav class="navbar navbar-expand-md">
+      <div>
+        <button class="menu navbar-toggler d-md-none" type="button" (click)="toggleMenu()" data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavbar" aria-label="Toggle navigation">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="logo">
+        <a [routerLink]="['/inicio']">
+          <div class="img-logo">
+            <img src="assets/logoblanco.png" alt="Logo web" />
+          </div>
+        </a>
+      </div>
+      <div class="order-md-3">
+        <div class="d-flex">
+          <div class="dropdown">
+            <button *ngIf="isSessionActive" mat-icon-button class="person dropbtn" aria-label="perfil">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+            <div class="dropdown-content">
+              <a [routerLink]="['/perfil']">
+                <mat-icon>manage_accounts</mat-icon>Mi perfil
+              </a>
+              <a class="mis-pedidos" [routerLink]="['/mispedidos']">
+                <mat-icon>shopping_bag</mat-icon>Pedidos
+              </a>
+              <a (click)="cerrarSesion()"> <mat-icon>logout</mat-icon>Salir </a>
+            </div>
+          </div>
+          <a *ngIf="!isSessionActive" [routerLink]="['/login']">
+            <button mat-icon-button class="person" aria-label="login">
+              <mat-icon>person</mat-icon>
+            </button>
+          </a>
+          <button mat-icon-button class="carrito" aria-label="carrito" (click)="openCart()"
+            *ngIf="isCartaPage; else redirectToCart">
+            <div [matBadge]="cartItemsCount" matBadgeSize="small" matBadgeColor="primary" class="carrito-extra">
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+          </button>
+
+          <ng-template #redirectToCart>
+            <a class="carrito" mat-icon-button routerLink="/carta">
+              <mat-icon>shopping_cart</mat-icon>
+            </a>
+          </ng-template>
+        </div>
+      </div>
+      <div class="navbar-collapse collapse order-md-2" [ngClass]="{'show': isMenuExpanded}" id="collapsibleNavbar">
+        <ul class="navbar-nav mx-auto mt-2">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/inicio']" (click)="collapseMenu()" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/carta']" (click)="collapseMenu()" routerLinkActive="active">Carta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/about']" (click)="collapseMenu()" routerLinkActive="active">Sobre
+              nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="isAdmin" class="nav-link" [routerLink]="['/admin']" (click)="collapseMenu()"
+              routerLinkActive="active">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

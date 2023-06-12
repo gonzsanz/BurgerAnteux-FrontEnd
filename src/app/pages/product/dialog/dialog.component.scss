@@ -1,0 +1,75 @@
+@import "../../../variables.scss";
+
+.dialog {
+  margin: 0 40px 10px 40px;
+}
+
+.close {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dialog-title {
+  font-family: "Heebo", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  color: $color-negro;
+}
+
+.description {
+  font-family: "Heebo", sans-serif;
+  color: #000;
+}
+
+.price {
+  font-family: "Heebo", sans-serif;
+  font-size: 20px;
+  color: #000;
+}
+
+.quantity-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+}
+
+.quantity-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin: 5px;
+    color: #f4e10b;
+  }
+}
+
+.añadir {
+  font-family: "Heebo", sans-serif;
+  background-color: #f4e10b;
+  display: block;
+  margin: 0 auto;
+  min-width: calc(100% - 20px);
+  width: auto;
+  height: 40px;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #000;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.cantidad {
+  font-size: 30px;
+  font-family: "Heebo", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}

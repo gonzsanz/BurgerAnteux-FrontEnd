@@ -1,0 +1,60 @@
+@import "../../variables.scss";
+
+.image-container {
+  position: relative;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../../../assets/ensaladas.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  min-width: 100%;
+  .content {
+    display: flex;
+  }
+}
+
+.container {
+  margin-bottom: 2rem;
+}
+
+#productList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px;
+
+  .btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    background-color: $color-amarillo;
+    color: $color-negro;
+    border: none;
+    border-radius: 20px;
+  }
+
+  .btn-selected {
+    background-color: $color-negro;
+    color: $color-amarillo;
+  }
+}
+#text {
+  color: $color-amarillo;
+}

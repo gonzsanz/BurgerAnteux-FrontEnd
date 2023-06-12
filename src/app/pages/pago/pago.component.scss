@@ -1,0 +1,240 @@
+@import "../../variables.scss";
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  h1 {
+    font-family: $fuente-anteux;
+    font-size: 3rem;
+    font-weight: bold;
+    color: $color-negro;
+    text-align: center;
+  }
+}
+
+h4 {
+  font-size: 1.8rem;
+  font-family: $fuente-anteux;
+  font-weight: bold;
+}
+
+.principal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 1rem 10rem 1rem;
+
+  .resumen {
+    flex-basis: 60%;
+    .entrega {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background-color: $color-blanco;
+
+      .botones-entrega {
+        padding: 1rem;
+      }
+    }
+    .direccion {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background-color: $color-blanco;
+
+      .botones-direccion {
+        padding-top: 1rem;
+        .modificar {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          cursor: pointer;
+          text-decoration: underline;
+          color: blue;
+        }
+        mat-form-field {
+          width: 100%;
+        }
+      }
+    }
+    .metodos-pago {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background-color: $color-blanco;
+
+      .botones-pago {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        i {
+          align-items: center;
+          font-size: 1.5rem;
+          margin: 1rem 0 0 1rem;
+        }
+      }
+    }
+
+    .comentarios {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background-color: $color-blanco;
+
+      p {
+        padding-left: 1.5rem;
+        margin: 1rem 0 0 0;
+      }
+
+      .botones-comentarios {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        i {
+          align-items: center;
+          font-size: 1.5rem;
+          margin: 1rem 0 0 1rem;
+        }
+      }
+    }
+  }
+
+  .pago {
+    flex-basis: 38%;
+    .resumen {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      background-color: $color-blanco;
+
+      .coste {
+        .container-products {
+          margin-top: 2rem;
+          .carrito {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem 0 1rem;
+            margin: 0 1rem 0 1rem;
+            font-family: "Heebo", sans-serif;
+            .product-qty {
+              display: flex;
+              align-items: center;
+              color: $color-negro;
+              margin-bottom: 0.8rem;
+              .qty {
+                color: $color-negro;
+              }
+            }
+            .price {
+              display: flex;
+              align-items: center;
+              color: $color-negro;
+              margin-bottom: 0.8rem;
+            }
+          }
+        }
+        .domicilio {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 1rem 0 1rem;
+          margin: 0 1rem 1rem 1rem;
+        }
+        .total {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1rem 0 1rem;
+          font-size: 1.2rem;
+        }
+        .iva {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding-left: 1rem;
+          p {
+            font-size: 12px;
+            font-weight: lighter;
+          }
+        }
+        .finalizar {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          .boton-finalizar {
+            flex-grow: 1;
+          }
+
+          .btn {
+            padding: 0;
+            color: $color-amarillo;
+            background-color: $color-negro;
+            font-size: 1.8rem;
+            font-family: $fuente-anteux;
+            margin: 1.5rem 0 1rem 0;
+            width: 100%;
+            border-radius: 10rem;
+            border: none;
+            &:hover {
+              transform: scale(1.05);
+              transition: ease-in-out 0.1s;
+            }
+          }
+          .spinner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(
+              0,
+              0,
+              0,
+              0.6
+            ); /* Fondo más oscuro con 0.6 de opacidad */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 15%;
+              height: auto;
+            }
+            h3 {
+              font-family: $fuente-anteux;
+              color: $color-blanco;
+              font-size: 2.5rem;
+              margin-top: 4.5rem;
+            }
+          }
+        }
+        .terminos {
+          display: flex;
+          justify-content: center;
+          font-size: 12px;
+          font-weight: lighter;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .principal {
+    flex-direction: column;
+    .resumen {
+      flex-basis: 100%;
+    }
+    .pago {
+      flex-basis: 100%;
+    }
+  }
+}

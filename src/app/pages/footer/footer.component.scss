@@ -1,0 +1,54 @@
+@import "/src/app/variables.scss";
+
+footer {
+  font-family: "Heebo", sans-serif;
+  background-color: $color-negro;
+  flex-shrink: 0;
+
+  p {
+    color: $color-blanco;
+  }
+  .titulo {
+    font-family: $fuente-anteux;
+    font-size: x-large;
+  }
+  .horario {
+    text-align: center;
+    font-size: small;
+  }
+  .direccion {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 2rem 0 2rem 0;
+    #telefono {
+      font-size: x-large;
+    }
+    a {
+      text-decoration: none;
+      font-size: small;
+    }
+  }
+  .time {
+    margin: 2rem 0 2rem 0;
+  }
+  mat-icon {
+    color: $color-amarillo;
+    height: auto;
+    padding-right: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .media {
+    margin: 2rem 0 2rem 0;
+    a {
+      color: $color-blanco;
+      text-decoration: none;
+      font-size: 1.8rem;
+      padding-right: 1rem;
+      margin-left: 1rem;
+    }
+  }
+  .copyright {
+    font-size: x-small;
+  }
+}

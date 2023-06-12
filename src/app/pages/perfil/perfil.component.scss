@@ -1,0 +1,213 @@
+@import '../../variables.scss';
+
+.login-heading {
+  font-family: $fuente-anteux;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5vh;
+  font-size: 2rem;
+  font-weight: bold;
+  color: $color-amarillo;
+  text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.3), 1px 1px 0px rgba(0, 0, 0, 0.8);
+}
+
+mat-error {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  max-width: 100vw;
+}
+
+mat-card {
+  background-color: rgba(116, 116, 116, 0.5);
+  backdrop-filter: blur(8px);
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-width: 250px;
+
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1590%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='rgba(0%2c 0%2c 0%2c 1)'%3e%3c/rect%3e%3cpath d='M1206.574%2c204.11C1270.817%2c207.449%2c1335.372%2c176.006%2c1365.277%2c119.05C1393.581%2c65.144%2c1372.658%2c1.756%2c1339.702%2c-49.439C1309.86%2c-95.797%2c1261.604%2c-124.115%2c1206.574%2c-127.484C1144.086%2c-131.31%2c1072.971%2c-122.002%2c1041.864%2c-67.672C1010.872%2c-13.543%2c1041.756%2c50.572%2c1074.084%2c103.915C1104.842%2c154.667%2c1147.309%2c201.03%2c1206.574%2c204.11' fill='rgba(135%2c 124%2c 4%2c 1)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1913.873%2c1170.652C2012.691%2c1169.936%2c2117.508%2c1150.641%2c2170.384%2c1067.156C2226.428%2c978.668%2c2217.033%2c864.975%2c2165.079%2c774.025C2112.686%2c682.306%2c2019.488%2c619.828%2c1913.873%2c618.109C1805.29%2c616.342%2c1702.64%2c671.707%2c1648.092%2c765.611C1593.301%2c859.934%2c1590.994%2c979.721%2c1650.838%2c1070.922C1705.975%2c1154.948%2c1813.375%2c1171.381%2c1913.873%2c1170.652' fill='rgba(135%2c 124%2c 4%2c 1)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M187.034%2c717.017C286.137%2c713.519%2c392.79%2c698.099%2c444.592%2c613.54C498.211%2c526.014%2c480.035%2c414.144%2c426.065%2c326.834C374.956%2c244.152%2c284.208%2c199.26%2c187.034%2c196.876C85.02%2c194.373%2c-16.55%2c229.718%2c-73.21%2c314.587C-136.652%2c409.614%2c-166.115%2c536.964%2c-104.07%2c632.908C-45.284%2c723.812%2c78.845%2c720.836%2c187.034%2c717.017' fill='rgba(135%2c 124%2c 4%2c 1)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1013.722%2c1293.867C1080.328%2c1291.009%2c1131.502%2c1242.158%2c1164.881%2c1184.449C1198.316%2c1126.642%2c1216.017%2c1057.453%2c1184.524%2c998.565C1151.449%2c936.721%2c1083.768%2c898.317%2c1013.722%2c901.806C948.628%2c905.049%2c903.229%2c958.13%2c870.054%2c1014.23C836.057%2c1071.72%2c807.774%2c1139.052%2c838.296%2c1198.46C870.899%2c1261.918%2c942.445%2c1296.925%2c1013.722%2c1293.867' fill='rgba(135%2c 124%2c 4%2c 1)' class='triangle-float3'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1590'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  min-width: 100%;
+  margin: 0;
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  max-width: 100vw;
+}
+
+.login-confirm {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  button {
+    background-color: $color-amarillo;
+    font-weight: bold;
+
+    &:disabled {
+      background-color: $color-amarillo;
+      opacity: 0.5;
+    }
+  }
+
+  .sesion {
+    background-color: $color-rojo;
+    color: $color-blanco;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.login-nombre {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  .nombre {
+    flex-basis: 40%;
+  }
+
+  .apellido {
+    flex-basis: 58%;
+  }
+}
+
+.login-email {
+  display: flex;
+  width: 100%;
+
+  .email {
+    flex-basis: 100%;
+  }
+}
+
+.login-address {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  .address {
+    flex-basis: 55%;
+  }
+
+  .phone {
+    flex-basis: 43%;
+  }
+}
+
+.login-password {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .password {
+    flex-basis: 49%;
+  }
+
+  .password2 {
+    flex-basis: 49%;
+  }
+
+  .changePassword {
+    flex-basis: 40%;
+    color: $color-amarillo;
+    display: flex;
+  }
+}
+
+
+@media (max-width: 630px) {
+
+  :host {
+    height: auto;
+  }
+
+  .login-nombre {
+    flex-direction: column;
+  }
+
+  .login-email {
+    width: auto;
+  }
+
+  .login-nombre {
+    width: auto;
+    justify-content: center;
+  }
+
+  .login-address {
+    width: auto;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .login-password {
+    width: 212px;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    .password {
+      width: 212px;
+    }
+
+    .password2 {
+      width: 212px;
+    }
+
+    .changePassword {
+      // remove flex-basis
+      flex-basis: auto;
+    }
+
+  }
+
+  .login-confirm {
+    width: 212px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      width: 212px;
+    }
+
+  }
+}

@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="close">
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="dialog" *ngIf="cart.length == 0">
+    <p class="dialog-title">Tu carrito esta vacío</p>
+  </div>
+  <div class="dialog" *ngIf="cart.length > 0">
+    <p class="dialog-title">Resumen de tu pedido:</p>
+
+    <mat-dialog-content>
+      <div class="container-products">
+        <div class="products" *ngFor="let item of cart; index as i">
+          <div class="product-qty">
+            <div class="qty">
+              <p>{{ getQuantity(item.product_id) }}x &nbsp;</p>
+            </div>
+            <div class="product">
+              <p>{{ item.name }}</p>
+            </div>
+          </div>
+          <div class="price">
+            <p>
+              {{ item.price * getQuantity(item.product_id) | number : "1.2" }}€
+            </p>
+          </div>
+          <div class="papelera">
+            <i class="far fa-trash-alt fa-2x" (click)="removeItem(i)"></i>
+          </div>
+        </div>
+      </div>
+      <div class="totales">
+        <p class="title">Total: {{ getTotal() | number : "1.2" }}€</p>
+      </div>
+      <div class="pago">
+        <div class="boton-pago" *ngIf="getLogin(); else redirectToLogin" routerLink="/pago">
+          <button class="btn" (click)="close()">Pagar</button>
+        </div>
+
+        <ng-template #redirectToLogin>
+          <div class="boton-pago" routerLink="/login">
+            <button class="btn" (click)="close()">Iniciar sesión</button>
+          </div>
+        </ng-template>
+      </div>
+
+    </mat-dialog-content>
+  </div>
+</div>

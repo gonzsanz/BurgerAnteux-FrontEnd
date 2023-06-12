@@ -1,0 +1,44 @@
+@import "../../../variables.scss";
+
+
+li {
+  list-style: none;
+
+  span {
+    font-weight: bold;
+    color: #000;
+  }
+}
+
+.observaciones {
+  .titulo {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .comentario {
+    margin-bottom: 1rem;
+  }
+}
+
+.close {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  color: $color-negro;
+}
+
+.dialog-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(1.5rem + 1vw);
+  color: $color-negro;
+  font-weight: bold;
+  font-family: $fuente-anteux;
+  padding-bottom: 2rem;
+  margin: 0;
+  padding: 0 4rem;
+}

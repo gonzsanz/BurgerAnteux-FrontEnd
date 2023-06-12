@@ -1,0 +1,64 @@
+@import "/src/app/variables.scss";
+
+.image-container {
+  position: relative;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../../../assets/hamburguesas.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  min-width: 100%;
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+    .imagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      object-fit: cover;
+      .logo {
+        width: 30%;
+        height: 30%;
+      }
+    }
+    .title {
+      font-family: $fuente-anteux;
+      text-align: center;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-top: 3rem;
+    }
+    .btn {
+      padding: 0.8rem;
+      color: $color-negro;
+      background-color: $color-amarillo;
+      font-size: x-large;
+      font-family: $fuente-anteux;
+      margin: 1.5rem 0 1rem 0;
+      &:hover {
+        transform: scale(1.1);
+        background-color: $color-negro;
+        color: $color-amarillo;
+        transition: ease-in-out(0.5);
+      }
+      &:active {
+        border: none;
+      }
+    }
+  }
+}

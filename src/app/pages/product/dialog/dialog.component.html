@@ -1,0 +1,26 @@
+<div class="close">
+  <button mat-icon-button (click)="cancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="dialog">
+  <mat-dialog-content>
+    <h2 class="dialog-title">{{ product.name }}</h2>
+    <p class="price">{{product.price | number:'1.2'}}€</p>
+    <p class="description">{{product.description}}</p>
+    <div class="quantity-controls">
+      <button mat-icon-button (click)="remove()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span class="cantidad">{{quantity}}</span>
+      <button mat-icon-button (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="addToCart()" class="añadir">
+      <span>Añadir {{quantity}} por {{total | number:'1.2'}}€</span>
+    </button>
+  </mat-dialog-actions>
+</div>

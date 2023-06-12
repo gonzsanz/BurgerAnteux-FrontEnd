@@ -1,0 +1,124 @@
+<div class="title">
+    <h1>Resumen de tu pedido</h1>
+</div>
+<div class="principal">
+    <div class="resumen">
+        <div class="entrega">
+            <h4>Entrega</h4>
+            <div class="botones-entrega">
+                <label>
+                    <mat-radio-button (change)="onEntregaChange('domicilio')">
+                        Entrega a domicilio
+                    </mat-radio-button>
+                </label>
+                <hr>
+                <label>
+                    <mat-radio-button (change)="onEntregaChange('local')" checked>
+                        Recoger en el
+                        local
+                    </mat-radio-button>
+                </label>
+            </div>
+        </div>
+        <div class="direccion">
+            <h4>Dirección</h4>
+            <div class="botones-direccion">
+                <ng-container *ngIf="entregaADomicilio">
+                    <span *ngIf="!mostrarInputDireccion">
+                        Tu dirección es: <b>{{ direccion }}</b>. ¡El pedido llegará en 1 hora a su domicilio!
+                        <a (click)="onModificarDireccion()" class="modificar">Modificar dirección</a>
+                    </span>
+                    <ng-container *ngIf="mostrarInputDireccion">
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Dirección</mat-label>
+                            <input matInput type="text" id="input-direccion" [(ngModel)]="direccionEditable">
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" (click)="guardarDireccion()">Guardar</button>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="!entregaADomicilio">
+                    Te esperamos en la <b>Calle de Dr. Jiménez Díaz, 3</b>. ¡El pedido estará listo en 30 minutos!
+                </ng-container>
+            </div>
+        </div>
+        <div class="comentarios">
+            <h4>Comentarios del pedido</h4>
+            <p>Observaciones</p>
+            <div class="botones-comentarios">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Comentarios</mat-label>
+                    <textarea matInput type="text" id="input-comentarios" [(ngModel)]="comentarios"
+                        placeholder="Ej: Sin cebolla..."></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="metodos-pago">
+            <h4>Métodos de pago</h4>
+            <div class="botones-pago">
+                <mat-radio-group [(ngModel)]="metodoPago">
+                    <mat-radio-button value="efectivo"> Efectivo</mat-radio-button><i class="fa-solid fa-coins"
+                        style="color: #f0e800;"></i>
+                    <hr>
+                    <mat-radio-button value="bizum"> Bizum</mat-radio-button> <i class="fa-solid fa-mobile"
+                        style="color: #1ab766;"></i>
+                    <hr>
+                    <mat-radio-button value="tarjeta"> Datáfono </mat-radio-button><i class="fa-regular fa-credit-card"
+                        style="color: #000000;"></i>
+                    <hr>
+                    <mat-radio-button value="paypal"> Paypal </mat-radio-button><i class="fa-brands fa-paypal"
+                        style="color: #2855a4;"></i>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+    <div class="pago">
+        <div class="resumen">
+            <h4>Resumen</h4>
+            <div class="coste">
+                <div class="container-products">
+                    <div class="carrito" *ngFor="let item of cart">
+                        <div class="product-qty">
+                            <div class="qty">
+                                <p>{{ getQuantity(item.product_id) }}x &nbsp;</p>
+                            </div>
+                            <div class="product">
+                                <p>{{ item.name }}</p>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <p>
+                                {{ item.price * getQuantity(item.product_id) | number : "1.2" }}€
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="domicilio" *ngIf="entregaADomicilio">
+                    <p>Servicio a domicilio:</p>
+                    <p>{{servicioDomicilio | number : "1.2"}}€</p>
+                </div>
+                <hr>
+                <div class="total">
+                    <p><b>Total:</b></p>
+                    <p><b>{{ getTotal() | number : "1.2" }}€</b></p>
+                </div>
+                <div class="iva">
+                    <p>IVA incluido</p>
+                </div>
+                <div class="finalizar">
+                    <div class="boton-finalizar">
+                        <div class="spinner" *ngIf="load">
+                            <img src="./../../../assets/burger.gif" alt="Spinner Hamburguesa">
+                            <h3>Verificando el pago...</h3>
+                        </div>
+                        <button *ngIf="metodoPago !== 'paypal'" class="btn" (click)="finalizarPedido()">Finalizar
+                            pedido</button>
+                        <ngx-paypal *ngIf="metodoPago === 'paypal'" [config]="payPalConfig"></ngx-paypal>
+                    </div>
+                </div>
+                <div class="terminos">
+                    <p>Al hacer clic en 'Finalizar pedido', confirmo que he leído y acepto todos los <b>términos y
+                            políticas</b>, así como la <b>información para consumidores en la UE.</b></p>
+                </div>
+            </div>
+        </div>
+    </div>

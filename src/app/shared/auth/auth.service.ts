@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  api: string = 'http://localhost:8080/api/users';
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   login(email: string, password: string) {
     return this.httpClient
-      .post(`${this.api}/login`, { email, password })
+      .post(`${environment.apiUrl}/users/login`, { email, password })
       .pipe(map((res: any) => res));
   }
 

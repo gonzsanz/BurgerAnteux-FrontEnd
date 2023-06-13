@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { Product } from '../interfaces/product';
 import { StorageService } from './storage.service';
 

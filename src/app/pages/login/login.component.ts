@@ -8,7 +8,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { SuccesDialogComponent } from '../registro/succes-dialog/succes-dialog.component';
 import { CartService } from 'src/app/shared/services/cart.service';
 

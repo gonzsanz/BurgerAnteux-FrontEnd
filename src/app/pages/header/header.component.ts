@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { MatDialog } from '@angular/material/dialog';

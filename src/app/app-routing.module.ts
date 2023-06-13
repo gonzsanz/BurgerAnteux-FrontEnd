@@ -11,7 +11,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { PagoComponent } from './pages/pago/pago.component';
-import { RoleGuard } from './pages/guard/role.guard';
+import { RoleGuard } from './shared/guard/role.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },

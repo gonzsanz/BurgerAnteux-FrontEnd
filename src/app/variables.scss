@@ -1,4 +1,9 @@
-$fuente-anteux: 'DK Mango Smoothie', cursive;
+@font-face {
+  font-family: "DK Mango Smoothie";
+  src: url("../assets/fonts/DK\ Mango\ Smoothie.otf");
+}
+
+$fuente-anteux: "DK Mango Smoothie", cursive;
 $color-negro: #171717;
 $color-amarillo: #f4e00b;
 $color-blanco: #ffffff;

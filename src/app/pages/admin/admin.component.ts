@@ -9,7 +9,6 @@ import { DialogProductoComponent } from './dialog-producto/dialog-producto.compo
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DetallesService } from 'src/app/shared/services/detalles.service';
 import { DialogDetallesComponent } from './dialog-detalles/dialog-detalles.component';
 import { Router } from '@angular/router';
 

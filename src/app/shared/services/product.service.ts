@@ -12,26 +12,32 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {}
 
   public getProducts(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiUrl}/all`);
+    return this.httpClient.get<any>(`${environment.apiUrl}/products/all`);
   }
 
   public getProductsByCategory(category: string): Observable<any> {
     return this.httpClient.get<any>(
-      `${environment.apiUrl}/category/${category}`
+      `${environment.apiUrl}/products/category/${category}`
     );
   }
 
   public addProduct(product: Product): Observable<any> {
-    return this.httpClient.post<any>(`${environment.apiUrl}/add`, product);
+    return this.httpClient.post<any>(
+      `${environment.apiUrl}/products/add`,
+      product
+    );
   }
 
   public deleteProduct(product_id: number): Observable<any> {
     return this.httpClient.delete<any>(
-      `${environment.apiUrl}/delete/${product_id}`
+      `${environment.apiUrl}/products/delete/${product_id}`
     );
   }
 
   public updateProduct(product: Product): Observable<any> {
-    return this.httpClient.put<any>(`${environment.apiUrl}/update`, product);
+    return this.httpClient.put<any>(
+      `${environment.apiUrl}/products/update`,
+      product
+    );
   }
 }

@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ProductComponent } from './pages/product/product/product.component';
-import { UserComponent } from './pages/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './pages/product/dialog/dialog.component';
 import { CartaComponent } from './pages/carta/carta.component';
@@ -56,7 +55,6 @@ import { DialogDetallesComponent } from './pages/admin/dialog-detalles/dialog-de
     HeaderComponent,
     FooterComponent,
     ProductComponent,
-    UserComponent,
     DialogComponent,
     CartaComponent,
     NotFoundComponent,

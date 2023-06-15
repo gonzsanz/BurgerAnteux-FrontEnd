@@ -50,9 +50,13 @@ export class HeaderComponent {
 
   checkIsAdmin(): void {
     // comprueba si el usuario es admin
+    if (!sessionStorage.getItem('email')) {
+      return;
+    }
     this.userService
       .getUser(sessionStorage.getItem('email')!)
       .subscribe((res) => {
+        console.log(res);
         if (res.role === 'admin') {
           this.isAdmin = true;
         }

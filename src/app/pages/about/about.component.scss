@@ -2,23 +2,23 @@
 
 .image-container {
   position: relative;
-  background-image: linear-gradient(
-      0deg,
+  background-image: linear-gradient(0deg,
       rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),
+      rgba(0, 0, 0, 0.7)),
     url("../../../assets/products/huevos-rotos.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
   min-width: 100%;
+
   .content {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
+
 .container {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -46,8 +46,6 @@
   }
 
   .postre {
-    width: 100%;
-    height: auto;
     margin: 1rem 0 2rem 0;
   }
 
@@ -61,6 +59,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
     div {
       flex-basis: 45%;
       padding: 1.5rem;
@@ -71,11 +70,13 @@
       display: flex;
       align-items: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
       p {
         font-size: 1rem;
         color: $color-blanco;
         padding: 1rem 0 0 1.5rem;
       }
+
       mat-icon {
         font-size: 2rem;
         padding: 0 2.5rem 2.5rem 0;
@@ -89,6 +90,7 @@
   .container {
     margin: 2rem;
   }
+
   .row {
     flex-direction: column;
   }

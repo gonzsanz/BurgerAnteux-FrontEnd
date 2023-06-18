@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
+import { NgOptimizedImage } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
@@ -100,6 +101,7 @@ import { DialogDetallesComponent } from './pages/admin/dialog-detalles/dialog-de
     MatRadioModule,
     NgbModule,
     NgxSpinnerModule,
+    NgOptimizedImage,
   ],
   exports: [MatIconModule, MatDialogModule, MatButtonModule, MatBadgeModule],
   providers: [],

@@ -62,4 +62,14 @@ export class PedidoComponent implements OnInit {
       return 'black'; // Color predeterminado si el estado no coincide con ninguno de los anteriores
     }
   }
+
+  getOrderState(state: string) {
+    if (state === 'DELIVERED') {
+      return 'ENVIADO';
+    } else if (state === 'READY') {
+      return 'ENTREGADO';
+    } else {
+      return 'EN COCINA';
+    }
+  }
 }

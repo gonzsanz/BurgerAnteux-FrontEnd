@@ -8,7 +8,7 @@ import { Product } from 'src/app/shared/interfaces/product';
   styleUrls: ['./carta.component.scss'],
 })
 export class CartaComponent implements OnInit {
-  selectedCategory: string = 'ESPECIALIDADES';
+  selectedCategory: string = 'TODOS';
   productList: any[] | undefined;
   categories: any[] = [
     'TODOS',
